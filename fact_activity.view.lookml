@@ -2,66 +2,77 @@
   sql_table_name: DW.FACT_ACTIVITY
   fields:
 
-  - dimension: id
-    primary_key: true
-    type: string
-    sql: ${TABLE}.ID
-
-  - dimension: activityid
-    type: string
-    sql: ${TABLE}.ACTIVITYID
-
-  - dimension: activitystartdatekey
-    type: string
-    sql: ${TABLE}.ACTIVITYSTARTDATEKEY
-
-  - dimension: courseid
-    type: string
-    sql: ${TABLE}.COURSEID
-
-  - dimension: institutionid
-    type: string
-    sql: ${TABLE}.INSTITUTIONID
-
-  - dimension: instructorid
-    type: string
-    sql: ${TABLE}.INSTRUCTORID
-
   - measure: avg_normalscore
     label: 'average normalscore'
     type: average
     value_format: '#,##0.0%'
     sql: ${TABLE}.NORMALSCORE
-
-  - dimension: overridedate
-    type: string
-    sql: ${TABLE}.OVERRIDEDATE
+    drill_fields: dim_student.student_guid, dim_learningobjective.learningoutcome, dim_learningobjective.learningobjective, dim_activity.activitydescription, fact_activity.scaledScore,  fact_activity.possibleScore,  fact_activity.normalScore
 
   - measure: possiblescore
     type: average
     sql: ${TABLE}.POSSIBLESCORE
 
-  - dimension: productid
-    type: string
-    sql: ${TABLE}.PRODUCTID
-
   - measure: scaledscore
     type: average
     sql: ${TABLE}.SCALEDSCORE
 
-  - dimension: studentid
-    type: string
-    sql: ${TABLE}.STUDENTID
-
-  - dimension: timeliness
-    type: string
+  - measure: timeliness
+    type: average
+    value_format: '#,##0.0'
     sql: ${TABLE}.TIMELINESS
 
-  - dimension: timespent
-    type: number
+  - measure: timespent
+    type: average
+    value_format: '#,##0.0'
     sql: ${TABLE}.TIMESPENT
 
   - measure: count
     type: count
     drill_fields: [id]
+    
+  - dimension: id
+    primary_key: true
+    type: string
+    hidden: true
+    sql: ${TABLE}.ID
 
+  - dimension: activityid
+    type: string
+    hidden: true
+    sql: ${TABLE}.ACTIVITYID
+
+  - dimension: activitystartdatekey
+    type: string
+    hidden: true
+    sql: ${TABLE}.ACTIVITYSTARTDATEKEY
+
+  - dimension: courseid
+    type: string
+    hidden: true
+    sql: ${TABLE}.COURSEID
+
+  - dimension: institutionid
+    type: string
+    hidden: true
+    sql: ${TABLE}.INSTITUTIONID
+
+  - dimension: instructorid
+    type: string
+    hidden: true
+    sql: ${TABLE}.INSTRUCTORID
+
+  - dimension: overridedate
+    type: string
+    hidden: true
+    sql: ${TABLE}.OVERRIDEDATE
+
+  - dimension: productid
+    type: string
+    hidden: true
+    sql: ${TABLE}.PRODUCTID
+
+  - dimension: studentid
+    type: string
+    hidden: true
+    sql: ${TABLE}.STUDENTID

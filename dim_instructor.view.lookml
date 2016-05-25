@@ -12,9 +12,11 @@
 
   - dimension: instructorid
     type: string
+    hidden: true
+    primary_key: true
     sql: ${TABLE}.INSTRUCTORID
 
-  - measure: count
+  - measure: instructorcount
     type: count
     drill_fields: []
 

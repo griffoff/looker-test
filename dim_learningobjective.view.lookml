@@ -8,6 +8,8 @@
 
   - dimension: learningobjectiveid
     type: string
+    hidden: true
+    primary_key: true
     sql: ${TABLE}.LEARNINGOBJECTIVEID
 
   - dimension: learningoutcome
@@ -16,13 +18,15 @@
 
   - dimension: lobjectiveid
     type: string
+    hidden: true
     sql: ${TABLE}.LOBJECTIVEID
 
   - dimension: loutcomeid
     type: string
+    hidden: true
     sql: ${TABLE}.LOUTCOMEID
 
-  - measure: count
+  - measure: learningobjectivecount
     type: count
     drill_fields: []
 

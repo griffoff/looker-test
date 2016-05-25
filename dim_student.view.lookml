@@ -19,6 +19,10 @@
     type: string
     sql: ${TABLE}.STUDENTID
     primary_key: true
+    
+  - measure: overall_score
+    type: number
+    sql: AVG(fact_activityaggregate.normalScore) over (partition by guid)
 
   - measure: count
     type: count
