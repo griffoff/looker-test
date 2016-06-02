@@ -14,9 +14,6 @@
       sql_on: dim_course.startdatekey = dim_date.datekey
       relationship: many_to_one
 
-
-- explore: dim_course_rs
-
 - explore: dim_date
 
 - explore: dim_institution
@@ -104,6 +101,15 @@
     - join: dim_course
       relationship: many_to_one
       sql_on: student_course_metrics.coursekey = dim_course.coursekey
+      
+- explore: student_course_octant
+  joins:
+    - join: dim_course
+      relationship: many_to_one
+      sql_on: student_course_octant.coursekey = dim_course.coursekey
+    - join: dim_product
+      relationship: many_to_one
+      foreign_key: dim_course.productid
 
 
 

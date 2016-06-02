@@ -7,7 +7,7 @@
     sql: ${TABLE}.ACTIVITYDESCRIPTION
 
   - dimension: activityid
-    type: string
+    type: number
     sql: ${TABLE}.ACTIVITYID
     primary_key: true
 
