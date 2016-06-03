@@ -137,7 +137,11 @@
   - dimension: user_guid
     type: string
     sql: ${TABLE}.USER_GUID
-
+    
+  - dimension: grade
+    type: string
+    sql: case when avg_score is null then 'No Score' when avg_score >= .9 then 'A' when avg_score >= .8 then 'B' when avg_score >= .7 then 'C' when avg_score >= .6 then 'D' when avg_score <.6 then 'F' end
+    
   - measure: count
     type: count
     drill_fields: []
