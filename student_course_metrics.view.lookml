@@ -6,20 +6,20 @@
     type: string
     sql: ${TABLE}.COURSEKEY
 
-  - dimension: duration
-    type: number
+  - measure: duration
+    type: average
     sql: ${TABLE}.DURATION
 
-  - dimension: frequency
-    type: string
+  - measure: frequency
+    type: average
     sql: ${TABLE}.FREQUENCY
 
-  - dimension: gap_week
-    type: string
+  - measure: gap_week
+    type: average
     sql: ${TABLE}.GAP_WEEK
 
-  - dimension: intensity
-    type: string
+  - measure: intensity
+    type: average
     sql: ${TABLE}.INTENSITY
 
   - dimension: octant
@@ -53,6 +53,12 @@
   - dimension: user_guid
     type: string
     sql: ${TABLE}.USER_GUID
+    links:
+    - label: Student Dashboard
+      url: https://cengage.looker.com/dashboards/test::student_activity?student_filter={{ value }}&course_filter={{ student_course_metrics.coursekey }}
+    - label: Analytics Diagnostic Tool
+      url: https://analytics-tools.cengage.info/diagnostictool/#/user/view/production/userIdentifier/{{ value }}
+
 
   - dimension: weeksname
     type: string

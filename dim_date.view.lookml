@@ -66,6 +66,7 @@
     sql: ${TABLE}.GOVERNMENTDEFINEDACADEMICTERM
 
   - dimension: governmentdefinedacademicterm_description
+    label: 'Academic Term (Government defined)'
     type: string
     sql: ${TABLE}.GOVERNMENTDEFINEDACADEMICTERM_DESCRIPTION
 
