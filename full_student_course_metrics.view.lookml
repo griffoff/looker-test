@@ -7,31 +7,31 @@
     sql: ${TABLE}.COURSEKEY
 
   - measure: duration
-    type: number
+    type: average
     sql: ${TABLE}.DURATION
 
   - measure: flashcard_count
-    type: number
+    type: average
     sql: ${TABLE}.FLASHCARD_COUNT
 
   - measure: frequency
-    type: number
+    type: average
     sql: ${TABLE}.FREQUENCY
 
   - measure: gap_week
-    type: number
+    type: average
     sql: ${TABLE}.GAP_WEEK
 
   - measure: highlight_count
-    type: number
+    type: average
     sql: ${TABLE}.HIGHLIGHT_COUNT
 
   - measure: intensity
-    type: number
+    type: average
     sql: ${TABLE}.INTENSITY
 
   - measure: login_count
-    type: number
+    type: average
     sql: ${TABLE}.LOGIN_COUNT
 
   - dimension: octant
@@ -39,19 +39,19 @@
     sql: ${TABLE}.OCTANT
 
   - measure: pages_read
-    type: number
+    type: average
     sql: ${TABLE}.PAGES_READ
 
   - measure: reading_count
-    type: number
+    type: average
     sql: ${TABLE}.READING_COUNT
 
   - measure: recency
-    type: number
+    type: average
     sql: ${TABLE}.RECENCY
 
   - measure: score
-    type: number
+    type: average
     sql: ${TABLE}.SCORE
 
   - dimension: type_of_student
@@ -65,6 +65,11 @@
   - dimension: weeksname
     type: string
     sql: ${TABLE}.WEEKSNAME
+    order_by_field: weeksnamesort
+        
+  - dimension: weeksnamesort
+    type: number
+    sql: split_part(weeksname, ' ', 2)::int
 
   - measure: count
     type: count
