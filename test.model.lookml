@@ -116,7 +116,7 @@
   joins:
     - join: dim_course
       relationship: many_to_one
-      sql_on: student_course_metrics.coursekey = dim_course.coursekey
+      sql_on: full_student_course_metrics.coursekey = dim_course.coursekey
     - join: dim_product
       relationship: many_to_one
       foreign_key: dim_course.productid
