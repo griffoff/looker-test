@@ -12,7 +12,7 @@
     title: 'Course Start'
     type: field_filter
     explore: student_course_metrics
-    field: dim_date.governmentdefinedacademicterm
+    field: dim_start_date.governmentdefinedacademicterm
   
   - name: filter_discipline
     title: 'Discipline'
@@ -20,7 +20,7 @@
     explore: student_course_metrics
     field: dim_product.discipline
     listen:
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
       
   - name: filter_course
     title: 'CourseKey'
@@ -29,7 +29,7 @@
     field: student_course_metrics.coursekey
     default_value: '4873663518396218672913941-AFB93CDDE78A809D59B6CCA292AEE0D1455DAB8AA2D43143'
     listen:
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
       filter_discipline: dim_product.discipline
     
   - name: filter_student
@@ -39,20 +39,20 @@
     field: student_course_metrics.user_guid
     default_value: '02b60b80f217dfe6:103a032:11c750eeae6:-6112'
     listen:
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
       filter_course: student_course_metrics.coursekey
 
   elements:
   - name: course_list
     title: Course List
     listen:
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
       filter_discipline: dim_product.discipline
       filter_course: student_course_metrics.coursekey
     type: table
     model: test
     explore: student_course_metrics
-    dimensions: [dim_product.discipline, dim_date.governmentdefinedacademicterm, dim_course.coursename, dim_course.coursekey,
+    dimensions: [dim_product.discipline, dim_start_date.governmentdefinedacademicterm, dim_course.coursename, dim_course.coursekey,
       student_course_metrics.user_guid]
     measures: [student_course_metrics.score, student_course_metrics.duration, student_course_metrics.frequency,
       student_course_metrics.intensity, student_course_metrics.gap_week, student_course_metrics.pages_read,
@@ -70,7 +70,7 @@
     title: Discipline Activity
     listen:
       filter_discipline: dim_product.discipline
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
     type: looker_column
     model: test
     explore: student_course_metrics
@@ -119,7 +119,7 @@
     title: Course Activity
     listen:
       filter_course: student_course_metrics.coursekey
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
     type: looker_column
     model: test
     explore: student_course_metrics
@@ -167,7 +167,7 @@
     title: Student Activity
     listen:
       filter_student: student_course_metrics.user_guid
-      filter_start_date: dim_date.governmentdefinedacademicterm
+      filter_start_date: dim_start_date.governmentdefinedacademicterm
     type: looker_column
     model: test
     explore: student_course_metrics

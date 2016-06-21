@@ -10,12 +10,15 @@
 
 - explore: dim_course
   joins:
-    - join: dim_date
-      sql_on: dim_course.startdatekey = dim_date.datekey
+    - join: dim_start_date 
+      sql_on: ${dim_course.startdatekey} = ${dim_start_date.datekey}
+      relationship: many_to_one
+    - join: dim_end_date 
+      sql_on: ${dim_course.enddatekey} = ${dim_end_date.datekey}
       relationship: many_to_one
     - join: dim_product
       relationship: many_to_one
-      foreign_key: dim_course.productid
+      sql_on: ${dim_course.productid} = ${dim_product.productid}
 
 - explore: dim_date
 
@@ -78,6 +81,9 @@
     - join: dim_student
       foreign_key: fact_activity.studentid
       relationship: many_to_one
+    - join: dim_course
+      foreign_key: fact_activity.courseid
+      relationship: many_to_one
     - join: dim_activity
       foreign_key: fact_activity.activityid
       relationship: many_to_one
@@ -100,27 +106,23 @@
 - explore: map_activity_type
 
 - explore: student_course_metrics
+  extends: [dim_course]
   joins:
     - join: dim_course
       relationship: many_to_one
-      sql_on: student_course_metrics.coursekey = dim_course.coursekey
-    - join: dim_product
-      relationship: many_to_one
-      foreign_key: dim_course.productid
-    - join: dim_date
-      view_label: 'Course Start Date'
-      relationship: many_to_one
-      foreign_key: dim_course.startdatekey
-    
+      sql_on: ${coursekey} = ${dim_course.coursekey}
       
 - explore: student_course_octant
+  extends: [dim_course]
   joins:
     - join: dim_course
       relationship: many_to_one
-      sql_on: student_course_octant.coursekey = dim_course.coursekey
-    - join: dim_product
+      sql_on: ${coursekey} = ${dim_course.coursekey}
+
+- explore: rch_studentinteraction
+  extends: [dim_course]
+  joins:
+    - join: dim_course
       relationship: many_to_one
-      foreign_key: dim_course.productid
-
-
+      sql_on: ${coursekey} = ${dim_course.coursekey}
 

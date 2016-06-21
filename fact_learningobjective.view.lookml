@@ -1,4 +1,5 @@
 - view: fact_learningobjective
+  label: 'Learning Objective'
   sql_table_name: DW.FACT_LEARNINGOBJECTIVE
   fields:
 
@@ -14,6 +15,15 @@
     type: average
     sql: coalesce(${TABLE}.MASTERY, ${TABLE}.CHECKIN_MASTERY) - ${TABLE}.CHECKIN_MASTERY
     drill_fields: dim_student.student_guid, dim_learningobjective.learningoutcome, dim_learningobjective.learningobjective, dim_activity.activitydescription, fact_activity.scaledScore,  fact_activity.possibleScore,  fact_activity.normalScore
+    value_format: '#,##0.0%'
+    html: |
+      {% if value > 50 %}
+        <font color="darkgreen" size="{{ value }}">{{ rendered_value }}</font>
+      {% elsif value > 0 %}
+        <font color="goldenrod" size="{{ value }}">{{ rendered_value }}</font>
+      {% else %}
+        <font color="darkred">{{ rendered_value }}</font>
+      {% endif %}
     
   - measure: count
     type: count

@@ -1,4 +1,5 @@
 - view: dim_product
+  label: 'Product'
   sql_table_name: DW.DIM_PRODUCT
   fields:
 

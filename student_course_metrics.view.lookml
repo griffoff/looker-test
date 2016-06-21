@@ -37,6 +37,22 @@
   - measure: recency
     type: average
     sql: ${TABLE}.RECENCY
+    
+  - measure: logins
+    type: average
+    sql: ${TABLE}.login_count
+    
+  - measure: highlights
+    type: average
+    sql: ${TABLE}.highlight_count
+    
+  - measure: readings
+    type: average
+    sql: ${TABLE}.reading_count
+    
+  - measure: flashcards
+    type: average
+    sql: ${TABLE}.flashcard_count
 
   - dimension: score_bucket
     type: number
