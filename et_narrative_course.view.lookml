@@ -8,7 +8,7 @@
     type: string
     sql: ${TABLE}.NARRATIVE
     html: |
-      <span style="word-wrap: break-word;">{{ value }}</span>
+      '<font style="word-wrap: break-word;">{{ value }}</font>'
 
   - dimension: title
     type: string
