@@ -74,4 +74,20 @@
   - measure: count
     type: count
     drill_fields: [weeksname]
+    
+  - measure: highlight_diff
+    type: number
+    sql: (avg(case when type_of_student = 'good' then highlight_count end)/avg(case when type_of_student = 'below-average' then highlight_count end))-1
+    value_format: 0.0%
+    
+  - measure: login_diff
+    type: number
+    sql: (avg(case when type_of_student = 'good' then login_count end)/avg(case when type_of_student = 'below-average' then login_count end))-1
+    value_format: 0.0%
+    
+  - measure: flashcard_count_diff
+    type: number
+    sql: (avg(case when type_of_student = 'good' then flashcard_count end)/avg(case when type_of_student = 'below-average' then flashcard_count end))-1
+    value_format: 0.0%
+    
 
