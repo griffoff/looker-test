@@ -39,6 +39,7 @@
     sql: ${TABLE}.CALENDARYEARVALUE
     label: 'Calendar Year'
     group_label: 'Calendar - Gregorian Calendar'
+    value_format: "0000"
 
   - dimension: cengageacademicterm
     type: string
@@ -53,11 +54,11 @@
     hidden: true
 
   - dimension: cengageacademicyear
-    type: string
+    type: number
     sql: ${TABLE}.CENGAGEACADEMICYEAR
     label: 'Cengage Academic Year'
     group_label: 'Calendar - Cengage Academic Calendar'
-    order_by_field: cengageacademictermid
+    value_format: "0000"
     
   - dimension: datekey
     type: string
@@ -208,6 +209,7 @@
     hidden: true
     
   - measure: count
+    label: 'No. of Days'
     type: count
     drill_fields: detail*
 
@@ -215,12 +217,12 @@
   # ----- Sets of fields for drilling ------
   sets:
     detail:
-    - calendarmonthofyearname
+    - datevalue
     - dayofweekname
+    - calendarmonthofyearname
+    - calendaryearvalue
     - isoweekofyearname
-    - calendarmonthname
-    - isoweekname
-    - isweekendname
+    - isoyearname
 
 - view: dim_start_date
   extends: [dim_date]

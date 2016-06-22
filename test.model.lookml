@@ -126,6 +126,19 @@
       relationship: many_to_one
       sql_on: ${coursekey} = ${dim_course.coursekey}
 
+- explore: et_report1
+  extends: [dim_course]
+  joins:
+    - join: dim_course
+      relationship: many_to_one
+      sql_on: ${coursekey} = ${dim_course.coursekey}
+    - join: et_narrative_course
+      relationship: many_to_one
+      sql_on: ${title} = ${et_narrative_course.title}
+    - join: et_narrative_discipline
+      relationship: many_to_one
+      sql_on: ${discipline} = ${et_narrative_discipline.discipline}
+    
 - explore: full_student_course_metrics
   joins:
     - join: dim_course
