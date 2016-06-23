@@ -90,4 +90,17 @@
     sql: (avg(case when type_of_student = 'good' then flashcard_count end)/avg(case when type_of_student = 'below-average' then flashcard_count end))-1
     value_format: 0.0%
     
+  - measure: reading_count_diff
+    type: number
+    sql: (avg(case when type_of_student = 'good' then reading_count end)/avg(case when type_of_student = 'below-average' then reading_count end))-1
+    value_format: 0.0%
+
+  - measure: good_count
+    type: number
+    sql: sum(case when type_of_student = 'good' then 1 end)
+
+  - measure: below_average_count
+    type: number
+    sql: sum(case when type_of_student = 'below-average' then 1 end)
+      
 
