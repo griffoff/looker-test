@@ -13,6 +13,10 @@
   - measure: flashcard_count
     type: average
     sql: ${TABLE}.FLASHCARD_COUNT
+    
+  - measure: search_count
+    type: average
+    sql: ${TABLE}.search_COUNT    
 
   - measure: frequency
     type: average
