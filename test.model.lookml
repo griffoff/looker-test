@@ -19,6 +19,9 @@
     - join: dim_product
       relationship: many_to_one
       sql_on: ${dim_course.productid} = ${dim_product.productid}
+    - join: dim_productplatform
+      relationship: many_to_one
+      sql_on: ${dim_course.productplatformid} = ${dim_productplatform.productplatformid}
 
 - explore: dim_date
 

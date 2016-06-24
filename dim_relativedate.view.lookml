@@ -1,5 +1,5 @@
 - view: dim_relativedate
-  sql_table_name: DW.DIM_RELATIVEDATE
+  sql_table_name: DW_GA.DIM_RELATIVEDATE
   fields:
 
   - dimension: category

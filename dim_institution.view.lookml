@@ -1,5 +1,5 @@
 - view: dim_institution
-  sql_table_name: DW.DIM_INSTITUTION
+  sql_table_name: DW_GA.DIM_INSTITUTION
   fields:
 
   - dimension: city
