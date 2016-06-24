@@ -69,6 +69,15 @@
   - dimension: final_type_of_student
     type: string
     sql: ${TABLE}.Final_TYPE_OF_STUDENT    
+    
+  - dimension: initial_type_of_student
+    type: string
+    sql:  case when weeksname = 'Week 1' then Weekly_Type_of_Student end
+
+  - dimension: Students_Who_End_Up 
+    type: string
+    sql: ${TABLE}.final_label        
+
 
   - dimension: user_guid
     type: string
