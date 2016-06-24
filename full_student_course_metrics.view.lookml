@@ -13,6 +13,10 @@
   - measure: flashcard_count
     type: average
     sql: ${TABLE}.FLASHCARD_COUNT
+    
+  - measure: search_count
+    type: average
+    sql: ${TABLE}.search_COUNT    
 
   - measure: frequency
     type: average
@@ -53,10 +57,18 @@
   - measure: score
     type: average
     sql: ${TABLE}.SCORE
+    
+  - measure: Final_score
+    type: average
+    sql: ${TABLE}.final_score    
 
   - dimension: type_of_student
     type: string
-    sql: ${TABLE}.TYPE_OF_STUDENT
+    sql: ${TABLE}.Weekly_TYPE_OF_STUDENT
+    
+  - dimension: final_type_of_student
+    type: string
+    sql: ${TABLE}.Final_TYPE_OF_STUDENT    
 
   - dimension: user_guid
     type: string
@@ -77,17 +89,40 @@
     
   - measure: highlight_diff
     type: number
-    sql: (avg(case when type_of_student = 'good' then highlight_count end)/avg(case when type_of_student = 'below-average' then highlight_count end))-1
+    sql: (avg(case when Final_TYPE_OF_STUDENT = 'good' then highlight_count end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then highlight_count end))-1
     value_format: 0.0%
     
   - measure: login_diff
     type: number
-    sql: (avg(case when type_of_student = 'good' then login_count end)/avg(case when type_of_student = 'below-average' then login_count end))-1
+    sql: (avg(case when Final_TYPE_OF_STUDENT = 'good' then login_count end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then login_count end))-1
     value_format: 0.0%
     
   - measure: flashcard_count_diff
     type: number
-    sql: (avg(case when type_of_student = 'good' then flashcard_count end)/avg(case when type_of_student = 'below-average' then flashcard_count end))-1
+    sql: (avg(case when Final_TYPE_OF_STUDENT = 'good' then flashcard_count end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then flashcard_count end))-1
     value_format: 0.0%
     
+  - measure: reading_count_diff
+    type: number
+    sql: (avg(case when Final_TYPE_OF_STUDENT = 'good' then reading_count end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then reading_count end))-1
+    value_format: 0.0%
+
+  - measure: good_count
+    type: number
+    sql: sum(case when Final_TYPE_OF_STUDENT = 'good' then 1 end)
+
+  - measure: below_average_count
+    type: number
+    sql: sum(case when Final_TYPE_OF_STUDENT = 'below-average' then 1 end)
+      
+
+  - measure: weekly_good_count
+    type: number
+    alias: WGood
+    sql: sum(case when Weekly_TYPE_OF_STUDENT = 'good' then 1 end)
+
+  - measure: weekly_below_average_count
+    type: number
+    alias: WBelowAverage
+    sql: sum(case when Weekly_TYPE_OF_STUDENT = 'below-average' then 1 end)      
 
