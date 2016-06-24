@@ -72,7 +72,7 @@
     
   - dimension: initial_type_of_student
     type: string
-    sql:  case when weeksname = 'Week 1' then Weekly_Type_of_Student end
+    sql: ${TABLE}.Initial_Type_of_Student
 
   - dimension: Students_Who_End_Up 
     type: string
