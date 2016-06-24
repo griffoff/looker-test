@@ -116,12 +116,12 @@
     sql: sum(case when Final_TYPE_OF_STUDENT = 'below-average' then 1 end)
       
 
-  - measure: weekly_good_count
+  - measure: Weekly_Good_Count
     type: number
     alias: WGood
     sql: sum(case when Weekly_TYPE_OF_STUDENT = 'good' then 1 end)
 
-  - measure: weekly_below_average_count
+  - measure: Weekly_Below_Average_Count
     type: number
     alias: WBelowAverage
     sql: sum(case when Weekly_TYPE_OF_STUDENT = 'below-average' then 1 end)      

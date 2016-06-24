@@ -400,7 +400,7 @@
     model: test
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
-    measures: [full_student_course_metrics.weekly_good_count, full_student_course_metrics.weekly_below_average_count]
+    measures: [full_student_course_metrics.Weekly_Good_Count, full_student_course_metrics.Weekly_Below_Average_Count]
     filters:
       full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname]
@@ -413,11 +413,8 @@
     y_axis_gridlines: true
     show_view_names: true
     series_colors:
-      average: orange
-      good: green
-      below-average: red
-      no-grade: gray
-      no-interactions: black    
+      full_student_course_metrics.Weekly_Below_Average_Count: red
+      full_student_course_metrics.Weekly_Good_Count: green  
     limit_displayed_rows: false
     y_axis_combined: true
     show_y_axis_labels: true
