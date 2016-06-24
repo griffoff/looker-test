@@ -1,6 +1,6 @@
 - view: dim_date
   label: 'Date'
-  sql_table_name: DW.DIM_DATE
+  sql_table_name: DW_GA.DIM_DATE
   fields:
 
   - dimension: calendarmonthid

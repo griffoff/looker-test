@@ -1,6 +1,6 @@
 - view: dim_course
   label: 'Course'
-  sql_table_name: DW.DIM_COURSE
+  sql_table_name: DW_GA.DIM_COURSE
   fields:
 
   - dimension: cgi
@@ -10,13 +10,13 @@
   - dimension: courseid
     type: string
     sql: ${TABLE}.COURSEID
-    primary_key: true
     hidden: true
 
   - dimension: coursekey
     label: 'Course Key'
     type: string
     sql: ${TABLE}.COURSEKEY
+    primary_key: true
 
   - dimension: coursename
     label: 'Course Name'

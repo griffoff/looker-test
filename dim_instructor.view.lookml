@@ -1,5 +1,5 @@
 - view: dim_instructor
-  sql_table_name: DW.DIM_INSTRUCTOR
+  sql_table_name: DW_GA.DIM_INSTRUCTOR
   fields:
 
   - dimension: instructor

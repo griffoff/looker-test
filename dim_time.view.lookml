@@ -1,5 +1,5 @@
 - view: dim_time
-  sql_table_name: DW.DIM_TIME
+  sql_table_name: DW_GA.DIM_TIME
   fields:
 
   - dimension: ampm

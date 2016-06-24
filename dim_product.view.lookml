@@ -1,6 +1,6 @@
 - view: dim_product
   label: 'Product'
-  sql_table_name: DW.DIM_PRODUCT
+  sql_table_name: DW_GA.DIM_PRODUCT
   fields:
 
   - dimension: course
@@ -193,6 +193,7 @@
     hidden: true
 
   - measure: count
+    label: 'No. of Products'
     type: count
     drill_fields: []
 

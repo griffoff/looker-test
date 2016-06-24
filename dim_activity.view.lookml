@@ -1,5 +1,5 @@
 - view: dim_activity
-  sql_table_name: DW.DIM_ACTIVITY
+  sql_table_name: DW_GA.DIM_ACTIVITY
   fields:
 
   - dimension: activitydescription
