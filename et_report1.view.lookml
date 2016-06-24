@@ -6,11 +6,17 @@
   - measure: avg_score
     type: average
     sql: ${TABLE}.AVG_SCORE
+    
+  - dimension: avg_score_bin_sort
+    type: number
+    sql: ${TABLE}.AVG_SCORE_BIN_SORT
+    hidden: true
 
   - dimension: avg_score_bin
     label: 'Avg. Score bin'
     type: string
     sql: ${TABLE}.AVG_SCORE_BIN
+    order_by_field: avg_score_bin_sort
 
   - dimension: coursekey
     type: string
@@ -47,10 +53,17 @@
     sql: ${TABLE}.PLATFORM
     hidden: true
 
+  - dimension: time_spent_bin_sort
+    type: number
+    sql: ${TABLE}.TIME_SPENT_BIN_SORT
+    hidden: true
+    
   - dimension: time_spent_bin
     type: string
     label: 'Time Spent bin'
     sql: ${TABLE}.TIME_SPENT_BIN
+    hidden: true
+    order_by_field: time_spent_bin_sort
 
   - measure: time_spent_per_week
     label: 'Time spent per week'
