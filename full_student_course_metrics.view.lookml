@@ -69,6 +69,15 @@
   - dimension: final_type_of_student
     type: string
     sql: ${TABLE}.Final_TYPE_OF_STUDENT    
+    
+  - dimension: initial_type_of_student
+    type: string
+    sql:  case when weeksname = 'Week 1' then Weekly_Type_of_Student end
+
+  - dimension: Students_Who_End_Up 
+    type: string
+    sql: ${TABLE}.final_label        
+
 
   - dimension: user_guid
     type: string
@@ -116,12 +125,12 @@
     sql: sum(case when Final_TYPE_OF_STUDENT = 'below-average' then 1 end)
       
 
-  - measure: weekly_good_count
+  - measure: Weekly_Good_Count
     type: number
     alias: WGood
     sql: sum(case when Weekly_TYPE_OF_STUDENT = 'good' then 1 end)
 
-  - measure: weekly_below_average_count
+  - measure: Weekly_Below_Average_Count
     type: number
     alias: WBelowAverage
     sql: sum(case when Weekly_TYPE_OF_STUDENT = 'below-average' then 1 end)      
