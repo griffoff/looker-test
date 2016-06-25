@@ -66,13 +66,28 @@
     type: string
     sql: ${TABLE}.Weekly_TYPE_OF_STUDENT
     
+  - dimension: type_of_student_sort
+    type: number
+    sql: case when Weekly_TYPE_OF_STUDENT = 'good' then 1 when Weekly_TYPE_OF_STUDENT = 'average' then 2 when Weekly_TYPE_OF_STUDENT = 'below-average' then 3 when Weekly_TYPE_OF_STUDENT = 'no-grade' then 4 when Weekly_TYPE_OF_STUDENT = 'no-interactions' then 5 end     
+    
+    
   - dimension: final_type_of_student
     type: string
-    sql: ${TABLE}.Final_TYPE_OF_STUDENT    
+    sql: ${TABLE}.Final_TYPE_OF_STUDENT 
+    order_by_field: final_type_of_student_sort
+        
+  - dimension: final_type_of_student_sort
+    type: number
+    sql: case when final_type_of_Student = 'good' then 1 when final_type_of_Student = 'average' then 2 when final_type_of_Student = 'below-average' then 3 end 
     
   - dimension: initial_type_of_student
     type: string
     sql: ${TABLE}.Initial_Type_of_Student
+    order_by_field: initial_type_of_student_sort    
+    
+  - dimension: initial_type_of_student_sort
+    type: number
+    sql: case when initial_type_of_student = 'good' then 1 when initial_type_of_student = 'average' then 2 when initial_type_of_student = 'below-average' then 3 when initial_type_of_student = 'no-grade' then 4 when initial_type_of_student = 'no-interactions' then 5 end     
 
   - dimension: Students_Who_End_Up 
     type: string
