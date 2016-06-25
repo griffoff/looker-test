@@ -90,29 +90,40 @@
     type: string
     sql: ${TABLE}."USER_GUID"
 
-  - measure: activity
+  - measure: activity_total
     type: sum
     sql: ${TABLE}."ACTIVITY"
+
+  - measure: activity
+    type: percent_of_total
+    sql: ${activity_total}
+    value_format: 0.00\%
 
   - measure: aplia
     type: sum
     sql: ${TABLE}."APLIA"
 
-  - measure: assessment
+  - measure: assessment_total
     type: sum
     sql: ${TABLE}."ASSESSMENT"
+  
+  - measure: assessment
+    type: percent_of_total
+    sql: ${assessment_total}
+    value_format: 0.00\%
 
   - measure: atp
     type: sum
     sql: ${TABLE}."ATP"
 
+  - measure: bookmark_total
+    type: sum
+    sql: ${TABLE}."BOOKMARK" + ${TABLE}."BOOKMARKS"
+    
   - measure: bookmark
-    type: sum
-    sql: ${TABLE}."BOOKMARK"
-
-  - measure: bookmarks
-    type: sum
-    sql: ${TABLE}."BOOKMARKS"
+    type: percent_of_total
+    sql: ${bookmark_total}
+    value_format: 0.00\%
 
   - measure: cnow_hw
     type: sum
@@ -142,9 +153,14 @@
     type: sum
     sql: ${TABLE}."FAQ"
 
-  - measure: flashcards
+  - measure: flashcards_total
     type: sum
     sql: ${TABLE}."FLASHCARDS" + ${TABLE}."FLASHCARD" + ${TABLE}."flash_cards"
+    
+  - measure: flashcards
+    type: percent_of_total
+    sql: ${flashcards_total}
+    value_format: 0.00\%
 
   - measure: flashnotes
     type: sum
@@ -166,25 +182,45 @@
     type: sum
     sql: ${TABLE}."google_docs"
 
-  - measure: gradebook
+  - measure: gradebook_total
     type: sum
     sql: ${TABLE}."GRADEBOOK"
+    
+  - measure: gradebook
+    type: percent_of_total
+    sql: ${gradebook_total}
+    value_format: 0.00\%
 
   - measure: hide
     type: sum
     sql: ${TABLE}."HIDE"
 
-  - measure: highlight
+  - measure: highlight_total
     type: sum
     sql: ${TABLE}."HIGHLIGHT3" + ${TABLE}."HIGHLIGHT4"
 
-  - measure: homework
+  - measure: highlight
+    type: percent_of_total
+    sql: ${highlight_total}
+    value_format: 0.00\%
+    
+  - measure: homework_total
     type: sum
     sql: ${TABLE}."HOMEWORK"
 
-  - measure: inline_assignment
+  - measure: homework
+    type: percent_of_total
+    sql: ${homework_total}
+    value_format: 0.00\%
+    
+  - measure: inline_assignment_total
     type: sum
     sql: ${TABLE}."inline_assignment"
+    
+  - measure: inline_assignment
+    type: percent_of_total
+    sql: ${inline_assignment_total}
+    value_format: 0.00\%
 
   - measure: intensity
     type: sum
@@ -214,9 +250,14 @@
     type: string
     sql: ${TABLE}."LENGTH_OF_COURSE"
 
-  - measure: login
+  - measure: login_total
     type: sum
     sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
+    
+  - measure: login
+    type: percent_of_total
+    sql: ${login_total}
+    value_format: 0.00\%
 
   - measure: media
     type: sum
@@ -250,9 +291,14 @@
     type: sum
     sql: ${TABLE}."OTHER"
 
-  - measure: pages_read
+  - measure: pages_read_total
     type: sum
     sql: ${TABLE}."PAGES_READ"
+    
+  - measure: pages_read
+    type: percent_of_total
+    sql: ${pages_read_total}
+    value_format: 0.00\%
 
   - measure: profile_plus
     type: sum
@@ -266,9 +312,14 @@
     type: sum
     sql: ${TABLE}."QUICKNOTE3" + ${TABLE}."QUICKNOTE4"
 
-  - measure: reading
+  - measure: reading_total
     type: sum
     sql: ${TABLE}."READING3" + ${TABLE}."READING4"
+    
+  - measure: reading
+    type: percent_of_total
+    sql: ${reading_total}
+    value_format: 0.00\%
 
   - measure: readspeaker
     type: sum
@@ -306,9 +357,14 @@
     type: sum
     sql: ${TABLE}."Time_in_Activity"
 
-  - measure: time_in_mindtap
+  - measure: time_in_mindtap_total
     type: sum
     sql: ${TABLE}."time_in_mindtap" + ${TABLE}."TIME-IN-MINDTAP"
+    
+  - measure: time_in_mindtap
+    type: percent_of_total
+    sql: ${time_in_mindtap_total}
+    value_format: 0.00\%
 
   - measure: total_session_time
     type: sum

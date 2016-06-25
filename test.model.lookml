@@ -61,7 +61,7 @@
 - explore: fact_activityaggregate
   joins:
     - join: dim_student
-      sql_on: fact_activityaggregate.guid = dim_student.student_guid
+      sql_on: fact_activityaggregate.guid = dim_student.user_guid
       relationship: many_to_one
     - join: dim_course
       sql_on: fact_activityaggregate.coursekey = dim_course.coursekey
@@ -153,15 +153,13 @@
       sql_on: ${coursekey} = ${dim_course.coursekey}
       
 - explore: full_student_course_metrics
+  extends: [dim_course]
   joins:
     - join: dim_course
       relationship: many_to_one
-      sql_on: full_student_course_metrics.coursekey = dim_course.coursekey
-    - join: dim_product
+      sql_on: ${coursekey} = ${dim_course.coursekey}
+
+    - join: dim_user
+      sql_on: ${user_guid} = ${dim_user.user_guid}
       relationship: many_to_one
-      foreign_key: dim_course.productid
-    - join: dim_date
-      view_label: 'Course Start Date'
-      relationship: many_to_one
-      foreign_key: dim_course.startdatekey   
       
