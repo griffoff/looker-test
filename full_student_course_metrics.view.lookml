@@ -5,15 +5,21 @@
   - dimension: coursekey
     type: string
     sql: ${TABLE}.COURSEKEY
+    
+  - measure: duration_base
+    label: 'Duration (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.DURATION, 0)
 
   - measure: duration
     label: 'Avg. Duration'
     type: average
-    sql: ${TABLE}.DURATION
+    sql: ${duration_base}
   
   - measure: duration_total
     type: sum
-    sql: ${TABLE}.DURATION
+    sql: ${duration_base}
   
   - measure: duration_percent_of_total
     label: 'Duration (% of total)'
