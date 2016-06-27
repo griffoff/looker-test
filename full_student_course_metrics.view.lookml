@@ -27,14 +27,20 @@
     type: percent_of_total
     sql: ${duration_total}
     value_format: 0.00\%
+    
+  - measure: flashcard_base
+    label: 'Flashcard (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.FLASHCARD_COUNT, 0)
 
   - measure: flashcard_count
     type: average
-    sql: ${TABLE}.FLASHCARD_COUNT
+    sql: ${flashcard_base}
     
   - measure: flashcard_total
     type: sum
-    sql: ${TABLE}.FLASHCARD_COUNT
+    sql: ${flashcard_base}
   
   - measure: flashcard_percent_of_total
     label: 'Flashcards (% of total)'
@@ -43,13 +49,19 @@
     sql: ${flashcard_total}
     value_format: 0.00\%
     
+  - measure: search_count_base
+    label: 'Search Count (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.search_COUNT, 0)
+    
   - measure: search_count
     type: average
-    sql: ${TABLE}.search_COUNT    
+    sql: ${search_count_base}    
   
   - measure: search_total
     type: sum
-    sql: ${TABLE}.search_COUNT
+    sql: ${search_count_base}  
   
   - measure: search_percent_of_total
     label: 'Search (% of total)'
@@ -66,13 +78,19 @@
     type: average
     sql: ${TABLE}.GAP_WEEK
 
+  - measure: highlight_count_base
+    label: 'Highlight Count (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.HIGHLIGHT_COUNT, 0)
+    
   - measure: highlight_count
     type: average
-    sql: ${TABLE}.HIGHLIGHT_COUNT
+    sql: ${highlight_count_base} 
     
   - measure: highlight_total
     type: sum
-    sql: ${TABLE}.HIGHLIGHT_COUNT
+    sql: ${highlight_count_base} 
   
   - measure: highlight_percent_of_total
     label: 'Highlight (% of total)'
@@ -84,14 +102,21 @@
   - measure: intensity
     type: average
     sql: ${TABLE}.INTENSITY
+    
+  - measure: login_count_base
+    label: 'Login Count (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.LOGIN_COUNT, 0)
+    
 
   - measure: login_count
     type: average
-    sql: ${TABLE}.LOGIN_COUNT
+    sql: ${login_count_base} 
     
   - measure: login_total
     type: sum
-    sql: ${TABLE}.LOGIN_COUNT
+    sql: ${login_count_base} 
   
   - measure: login_percent_of_total
     label: 'Logins (% of total)'
@@ -104,13 +129,19 @@
     type: string
     sql: ${TABLE}.OCTANT
 
+  - measure: pages_read_base
+    label: 'Pages Read Count (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.PAGES_READ, 0)
+
   - measure: pages_read
     type: average
-    sql: ${TABLE}.PAGES_READ
+    sql: ${pages_read_base}
     
   - measure: pages_read_total
     type: sum
-    sql: ${TABLE}.PAGES_READ
+    sql: ${pages_read_base}
   
   - measure: pages_read_percent_of_total
     label: 'Pages Read (% of total)'
@@ -118,14 +149,20 @@
     type: percent_of_total
     sql: ${pages_read}
     value_format: 0.00\%
+
+  - measure: reading_count_base
+    label: 'Reader Count (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.READING_COUNT, 0)
   
   - measure: reading_count
     type: average
-    sql: ${TABLE}.READING_COUNT
+    sql: ${reading_count_base}
     
   - measure: reading_total
     type: sum
-    sql: ${TABLE}.READING_COUNT
+    sql: ${reading_count_base}
   
   - measure: reading_percent_of_total
     label: 'Reading (% of total)'
