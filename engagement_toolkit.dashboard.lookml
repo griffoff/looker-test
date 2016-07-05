@@ -8,58 +8,38 @@
     type: field_filter
     explore: student_course_metrics
     field: student_course_metrics.coursekey
-    default_value: '4874041889612715212104406380-1034-HST-103-DLA-SU15'
+    default_value: 'MTPPWKXPG6KP'
 
   elements:
 
-  - name: et_time_spent_title
-    width: 3
-    height: 1
+  - name: et_time_spent_narrative
+    width: 2
+    height: 3
+    left: 0
     top: 0
-    left: -1
-    title: Time Spent Narrative
     listen:
       filter_course: et_narrative.coursekey
     type: single_value
     model: test
     explore: et_narrative
-    dimensions: [et_narrative.narrative_level]
-    sorts: [et_narrative.narrative_level]
-    limit: 1
-    show_single_value_title: false
-    show_comparison: false
-    
-  - name: et_time_spent_narrative
-    width: 3
-    height: 3
-    top: 1
-    left: -1
-    title: MindTap grades based on hours used per week
-    listen:
-      filter_course: et_narrative.coursekey
-    type: looker_single_record
-    model: test
-    explore: et_narrative
     dimensions: [et_narrative.narrative_general]
     sorts: [et_narrative.narrative_general]
     limit: 1
-    show_view_names: false
-    table_theme: transparent
-    limit_displayed_rows: false
+    show_single_value_title: false
+    show_comparison: false
 
   - name: et_time_spent
-    width: 5
+    title: MindTap grades based on hours used per week
+    width: 6
     height: 3
-    top: 0
     left: 2
-    title: null
     listen:
       filter_course: et_report1.coursekey
     type: looker_column
     model: test
     explore: et_report1
-    dimensions: [et_report1.avg_score_bin, et_report1.time_spent_bin]
-    pivots: [et_report1.avg_score_bin]
+    dimensions: [et_report1.score_bin, et_report1.time_spent_bin]
+    pivots: [et_report1.score_bin]
     measures: [et_report1.count]
     sorts: [et_report_1.avg_score_bin, et_report1.time_spent_bin]
     limit: 15

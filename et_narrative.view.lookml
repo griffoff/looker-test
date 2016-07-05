@@ -8,7 +8,11 @@
     type: string
     sql: ${TABLE}.NARRATIVE
     html: |
-      <h1 style="word-wrap: break-word;">{{ value }}</h1>
+      <div style="white-space:normal;padding:10px;">
+        <span style="width:100%; float:left; font: bold, 16pt, italic">{{et_narrative.narrative_level._value}}</span>
+        <br>
+        <span style="width:100%; align: centre; color:red">{{ rendered_value }}</span>
+      </div>
 
   - dimension: narrative_level
     label: 'Narrative Level'
