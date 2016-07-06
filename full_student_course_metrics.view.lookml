@@ -21,6 +21,12 @@
     type: sum
     sql: ${duration_base}
   
+  - measure: duration_per_login
+    label: 'Avg. Session Time'
+    type: average
+    sql: (${duration_base} / ${login_count_base})
+    value_format: "0.00"
+  
   - measure: duration_percent_of_total
     label: 'Duration (% of total)'
     group_label: '% of Total'
