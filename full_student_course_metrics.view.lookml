@@ -211,6 +211,7 @@
     
   - dimension: type_of_student_sort
     type: number
+    hidden: true
     sql: case when Weekly_TYPE_OF_STUDENT = 'good' then 1 when Weekly_TYPE_OF_STUDENT = 'average' then 2 when Weekly_TYPE_OF_STUDENT = 'below-average' then 3 when Weekly_TYPE_OF_STUDENT = 'no-grade' then 4 when Weekly_TYPE_OF_STUDENT = 'no-interactions' then 5 end     
     
     
@@ -221,6 +222,7 @@
         
   - dimension: final_type_of_student_sort
     type: number
+    hidden: true
     sql: case when final_type_of_Student = 'good' then 1 when final_type_of_Student = 'average' then 2 when final_type_of_Student = 'below-average' then 3 end 
     
   - dimension: initial_type_of_student
@@ -243,12 +245,14 @@
     hidden: true
 
   - dimension: weeksname
+    label: 'Week of Course'
     type: string
     sql: ${TABLE}.WEEKSNAME
     order_by_field: weeksnamesort
         
   - dimension: weeksnamesort
     type: number
+    hidden: true
     sql: split_part(weeksname, ' ', 2)::int
 
   - measure: count
@@ -256,21 +260,30 @@
     drill_fields: [weeksname]
     
   - measure: highlight_diff
+    label: 'Highlights: Good vs Below Average'
+    group_label: 'Diffs: Good vs Below Average'
     type: number
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then highlight_count end) > 0 then (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(highlight_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(highlight_count,0) end))-1 else 0 end
     value_format: 0.0%
     
   - measure: login_diff
+    label: 'Logins: Good vs Below Average'
+    group_label: 'Diffs: Good vs Below Average'
+    
     type: number
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then login_count end) > 0 then ( avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(login_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(login_count,0) end) )-1     else 0 end
     value_format: 0.0%
     
   - measure: flashcard_count_diff
+    label: 'Flashcards: Good vs Below Average'
+    group_label: 'Diffs: Good vs Below Average'
     type: number
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then flashcard_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(flashcard_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(flashcard_count,0) end))-1 else 0 end
     value_format: 0.0%
     
   - measure: reading_count_diff
+    label: 'Reading: Good vs Below Average'
+    group_label: 'Diffs: Good vs Below Average'
     type: number
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then reading_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(reading_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(reading_count,0) end))-1 else 0 end
     value_format: 0.0%
