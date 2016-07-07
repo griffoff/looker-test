@@ -263,40 +263,37 @@
     label: 'Highlights: Good vs Below Average'
     group_label: 'Diffs: Good vs Below Average'
     type: number
-    group_label: 'Final Good/Final Below-Average'
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then highlight_count end) > 0 then (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(highlight_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(highlight_count,0) end))-1 else 0 end
     value_format: 0.0%
     
   - measure: login_diff
     label: 'Logins: Good vs Below Average'
     group_label: 'Diffs: Good vs Below Average'
-    
     type: number
-    group_label: 'Final Good/Final Below-Average'    
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then login_count end) > 0 then ( avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(login_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(login_count,0) end) )-1     else 0 end
     value_format: 0.0%
     
-  - measure: flashcard_count_diff
-    label: 'Flashcards: Good vs Below Average'
-    group_label: 'Diffs: Good vs Below Average'
-    type: number
-    group_label: 'Final Good/Final Below-Average'    
-    sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then flashcard_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(flashcard_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(flashcard_count,0) end))-1 else 0 end
-    value_format: 0.0%
+  #- measure: flashcard_count_diff
+  #  label: 'Flashcards: Good vs Below Average'
+  #  group_label: 'Diffs: Good vs Below Average'
+  #  type: number
+  #  group_label: 'Final Good/Final Below-Average'    
+  #  sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then flashcard_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(flashcard_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(flashcard_count,0) end))-1 else 0 end
+  #  value_format: 0.0%
     
   - measure: reading_count_diff
+    type: number
     label: 'Reading: Good vs Below Average'
     group_label: 'Diffs: Good vs Below Average'
-    type: number
-    group_label: 'Final Good/Final Below-Average'    
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then reading_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(reading_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(reading_count,0) end))-1 else 0 end
     value_format: 0.0%
     
-  - measure: search_count_diff
-    type: number
-    group_label: 'Final Good/Final Below-Average'    
-    sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then search_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(search_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(search_count,0) end))-1 else 0 end
-    value_format: 0.0%
+  #- measure: search_count_diff
+  #  type: number
+  #  label: 'Searches Good vs Below Avg'
+  #  group_label: 'Final Outcome Good vs Below-Average'
+  #  sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then search_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(search_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(search_count,0) end))-1 else 0 end
+  #  value_format: 0.0%
     
   - measure: highlight_diff_G_BA
     type: number
@@ -304,7 +301,6 @@
     sql: case when avg(case when Initial_Type_of_Student = 'below-average' then highlight_count end) > 0 then (avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student = 'below-average'  then nullif(highlight_count,0) end)/avg(case when  Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'below-average' then nullif(highlight_count,0) end))-1 else 0 end
     value_format: 0.0%
   
-    
   - measure: search_count_G_BA
     type: number
     group_label: 'FGIBA'  
