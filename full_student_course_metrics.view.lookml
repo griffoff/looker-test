@@ -301,21 +301,21 @@
     label: 'Improved to Good: Highlights'
     group_label: 'Improvers Usage Difference: Final Good'
     description: 'Difference in usage for students who started with not good scores but ended up with a final good score, compared to those who started the same but did not end up with a good final score: (final type = good, initial_type != good) vs (final_type not good or average, initial type != good)'
-    sql: coalesce(avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then highlight_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then highlight_count end), 0), 0)-1
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then highlight_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then highlight_count end), 0) -1
     value_format: 0.0%
   
   - measure: search_count_G_BA
     type: number
     label: 'Improved to Good: Search'
     group_label: 'Improvers Usage Difference: Final Good'
-    sql: coalesce(avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then search_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then search_count end), 0), 0)-1
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then search_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then search_count end), 0) -1
     value_format: 0.0%  
   
   - measure: login_G_BA
     type: number
     label: 'Improved to Good: Login'
     group_label: 'Improvers Usage Difference: Final Good'
-    sql: coalesce(avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then login_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then login_count end), 0), 0)-1
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then login_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then login_count end), 0) -1
     
     value_format: 0.0%  
   
@@ -323,14 +323,14 @@
     type: number
     label: 'Improved to Good: Flashcard'
     group_label: 'Improvers Usage Difference: Final Good'
-    sql: coalesce(avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then flashcard_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then flashcard_count end), 0), 0)-1
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then flashcard_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then flashcard_count end), 0) -1
     value_format: 0.0%        
   
   - measure: reading_count_G_BA
     type: number
     label: 'Improved to Good: Reading'
     group_label: 'Improvers Usage Difference: Final Good'
-    sql: coalesce(avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then reading_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then reading_count end), 0), 0)-1
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then reading_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then reading_count end), 0) -1
     value_format: 0.0%    
     
   - measure: good_count
