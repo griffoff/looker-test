@@ -1,4 +1,5 @@
 - view: dim_institution
+  label: 'Institution'
   sql_table_name: DW_GA.DIM_INSTITUTION
   fields:
 
@@ -13,11 +14,13 @@
   - dimension: dw_ldid
     type: string
     sql: ${TABLE}.DW_LDID
+    hidden: true
 
   - dimension_group: dw_ldts
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.DW_LDTS
+    hidden: true
 
   - dimension: enrollmentnumber
     type: string

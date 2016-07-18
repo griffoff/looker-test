@@ -1,4 +1,5 @@
 - view: dim_student
+  label: 'Student'
   sql_table_name: DW.DIM_STUDENT
   fields:
 
@@ -7,6 +8,7 @@
     sql: ${TABLE}.STUDENT
 
   - dimension: student_guid
+    label: 'Student SSO Guid'
     type: string
     sql: ${TABLE}.STUDENT_GUID
     
@@ -19,10 +21,7 @@
     type: string
     sql: ${TABLE}.STUDENTID
     primary_key: true
-    
-  - measure: overall_score
-    type: number
-    sql: AVG(fact_activityaggregate.normalScore) over (partition by guid)
+    hidden: true
 
   - measure: count
     type: count

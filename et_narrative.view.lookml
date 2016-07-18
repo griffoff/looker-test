@@ -20,12 +20,11 @@
     sql: ${TABLE}.NARRATIVE_LEVEL
     
   - dimension: coursekey
+    label: 'Course Key'
     type: string
+    primary_key: true
     hidden: true
     sql: ${TABLE}.coursekey
-
-  - measure: count
-    type: count
-    drill_fields: []
+  
 
 

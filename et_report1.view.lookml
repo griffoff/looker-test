@@ -23,35 +23,19 @@
     sql: ${TABLE}.COURSE_KEY
     hidden: true
 
-  - dimension: discipline
+  - dimension: user_guid
     type: string
-    sql: ${TABLE}.DISCIPLINE
-    hidden: true
-    
-  - dimension: isbn13
-    type: string
-    sql: ${TABLE}.ISBN13
-    hidden: true
+    sql: ${TABLE}.USER_GUID
 
   - dimension: login_bin
     label: 'Logins bin'
     type: string
-    sql: ${TABLE}.LOGIN_BIN
+    sql: ${TABLE}.LOGINS_BIN
 
   - measure: login_per_week
     type: average
     label: 'Logins per week'
-    sql: ${TABLE}.LOGIN_PER_WEEK
-
-  - dimension: partyid
-    type: string
-    sql: ${TABLE}.PARTYID
-    hidden: true
-    
-  - dimension: platform
-    type: string
-    sql: ${TABLE}.PLATFORM
-    hidden: true
+    sql: ${TABLE}.LOGINS_PER_WEEK
 
   - dimension: time_spent_bin_sort
     type: number
@@ -68,11 +52,6 @@
     label: 'Time spent per week'
     type: average
     sql: ${TABLE}.TIME_SPENT_PER_WEEK
-
-  - dimension: title
-    type: string
-    sql: ${TABLE}.TITLE
-    hidden: true
 
   - measure: count
     label: 'No. of Students'

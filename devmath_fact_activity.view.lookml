@@ -1,9 +1,10 @@
 - view: fact_activity
+  label: 'Activity'
   sql_table_name: DW.FACT_ACTIVITY
   fields:
 
   - measure: avg_normalscore
-    label: 'average normalscore'
+    label: 'Avg. Score'
     type: average
     value_format: '#,##0.0%'
     sql: ${TABLE}.NORMALSCORE
@@ -19,10 +20,14 @@
 
   - measure: timeliness
     type: average
+    label: 'Avg. Timeliness (days)'
+    description: 'Average number of days before due date activity is completed'
     value_format: '#,##0.0'
-    sql: ${TABLE}.TIMELINESS
+    sql: -${TABLE}.TIMELINESS/24.0
 
   - measure: timespent
+    label: 'Avg. Time spent (secs)'
+    description: 'Average time spent on activities'
     type: average
     value_format: '#,##0.0'
     sql: ${TABLE}.TIMESPENT
