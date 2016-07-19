@@ -153,9 +153,9 @@
     - join: et_narrative
       relationship: many_to_one
       sql_on: ${coursekey} = ${et_narrative.coursekey}
-#    - join: full_student_course_metrics
-#      relationship: one_to_one
-#      sql_on: ${coursekey} = ${full_student_course_metrics.coursekey} and ${user_guid} = ${full_student_course_metrics.user_guid}
+    - join: full_student_course_metrics
+      relationship: one_to_one
+      sql_on: ${coursekey} = ${full_student_course_metrics.coursekey} and ${user_guid} = ${full_student_course_metrics.user_guid}
     
 - explore: et_narrative
   extends: [dim_course]

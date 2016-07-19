@@ -21,8 +21,8 @@
     links:
     - label: Engagement Toolkit (Looker)
       url: https://cengage.looker.com/dashboards/test::engagement_toolkit?filter_course={{value}}
-    #- label: Engagement Toolkit (Dev)
-    #  url: http://dashboard-dev.cengage.info/engtoolkit/{{value}}
+    - label: Engagement Toolkit (Dev)
+      url: http://dashboard-dev.cengage.info/engtoolkit/{{value}}
 
   - dimension: coursename
     label: 'Course Name'
