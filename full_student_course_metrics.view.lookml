@@ -295,6 +295,40 @@
   #  group_label: 'Final Outcome Good vs Below-Average'
   #  sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then search_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(search_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(search_count,0) end))-1 else 0 end
   #  value_format: 0.0%
+  - measure: flashcard_count_D_F_G
+    type: number
+    label: 'Degraded from Good: Flashcard'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then flashcard_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then flashcard_count end), 0) -1
+    value_format: 0.0% 
+    
+  - measure: highlight_diff_D_F_G
+    type: number
+    label: 'Degraded from Good: Highlights'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then highlight_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then highlight_count end), 0) -1
+    value_format: 0.0%   
+
+  - measure: search_count_D_F_G
+    type: number
+    label: 'Degraded from Good: Search'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then search_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then search_count end), 0) -1
+    value_format: 0.0%    
+
+  - measure: login_D_F_G
+    type: number
+    label: 'Degraded from Good: Login'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then login_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then login_count end), 0) -1
+    value_format: 0.0% 
+    
+  - measure: reading_count_D_F_G
+    type: number
+    label: 'Degraded from Good: Reading'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then reading_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then reading_count end), 0) -1
+    value_format: 0.0%     
     
   - measure: highlight_diff_G_BA
     type: number
@@ -316,7 +350,6 @@
     label: 'Improved to Good: Login'
     group_label: 'Improvers Usage Difference: Final Good'
     sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then login_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then login_count end), 0) -1
-    
     value_format: 0.0%  
   
   - measure: flashcard_count_G_BA

@@ -7,8 +7,78 @@
 
   elements:
 
+  - name: Behavior Comparison Starting Below-Average
+    title: Started Below-Average ended Good. 
+    description: 'Test Description'
+    type: looker_line
+    model: test
+    explore: full_student_course_metrics
+    dimensions: [full_student_course_metrics.weeksname]
+    measures: [full_student_course_metrics.flashcard_count_G_BA, full_student_course_metrics.highlight_diff_G_BA,
+      full_student_course_metrics.login_G_BA, full_student_course_metrics.reading_count_G_BA,
+      full_student_course_metrics.search_count_G_BA]
+    filters:
+      dim_product.discipline: ''
+      full_student_course_metrics.weeksnamesort: '[0, 20]'
+    sorts: [full_student_course_metrics.weeksname]
+    limit: 500
+    stacking: ''
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    show_null_points: true
+    point_style: none
+    interpolation: linear    
+    
+  - name: Behavior Comparison Starting Good
+    title: Started Good ended Below-Average. 
+    type: looker_line
+    model: test
+    explore: full_student_course_metrics
+    dimensions: [full_student_course_metrics.weeksname]
+    measures: [full_student_course_metrics.flashcard_count_D_F_G, full_student_course_metrics.highlight_diff_D_F_G,
+      full_student_course_metrics.login_D_F_G, full_student_course_metrics.search_count_D_F_G,
+      full_student_course_metrics.reading_count_D_F_G]
+    filters:
+      full_student_course_metrics.weeksnamesort: '[0, 20]'
+    sorts: [full_student_course_metrics.weeksname]
+    limit: 500
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    show_null_points: true
+    point_style: none
+    interpolation: linear
+    
   - name: Duration_Vs_Login_Count
-    title: Duration_Vs_Login_Count
+    title: Duration divided by login count
     type: looker_area
     model: test
     explore: full_student_course_metrics
@@ -35,7 +105,7 @@
     legend_position: center
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: true
+    show_view_names: false
     series_colors:
       good - Duration_Over_Logins: green
       below-average - Duration_Over_Logins: red
@@ -53,44 +123,8 @@
     show_null_points: true
     point_style: circle
     interpolation: linear
-    
-  - name: Behavior Comparison
-    title: Started below-average ended_good. 
-    type: looker_line
-    model: test
-    explore: full_student_course_metrics
-    dimensions: [full_student_course_metrics.weeksname]
-    measures: [full_student_course_metrics.flashcard_count_G_BA, full_student_course_metrics.highlight_diff_G_BA,
-      full_student_course_metrics.login_G_BA, full_student_course_metrics.reading_count_G_BA,
-      full_student_course_metrics.search_count_G_BA]
-    filters:
-      dim_product.discipline: ''
-      full_student_course_metrics.weeksnamesort: '[0, 20]'
-    sorts: [full_student_course_metrics.weeksname]
-    limit: 500
-    stacking: ''
-    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
-      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    show_null_points: true
-    point_style: none
-    interpolation: linear
-    
-  - name: Activity Comparison
+
+  - name: Activity Comparison 
     title: Activities that improved outcome
     type: looker_column
     model: test
@@ -114,7 +148,7 @@
     legend_position: left
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: true
+    show_view_names: false
     series_colors:
       good: green
       average: orange
@@ -137,4 +171,7 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
+
+
+    
     
