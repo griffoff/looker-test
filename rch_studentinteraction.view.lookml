@@ -1,4 +1,5 @@
 - view: rch_studentinteraction
+  label: 'All Student Interactions - RAW'
   sql_table_name: DW.RCH_STUDENTINTERACTION
   fields:
   
@@ -90,14 +91,24 @@
     type: string
     sql: ${TABLE}."USER_GUID"
 
+  - measure: activity_base
+    hidden: true
+    type: number
+    sql: ${TABLE}."ACTIVITY"
+
   - measure: activity_total
     type: sum
-    sql: ${TABLE}."ACTIVITY"
+    sql: ${activity_base}
 
   - measure: activity
     type: percent_of_total
     sql: ${activity_total}
     value_format: 0.00\%
+
+  - measure: activity_avg
+    type: average
+    sql: ${activity_base}
+    value_format: "0.0"
 
   - measure: aplia
     type: sum
@@ -133,8 +144,9 @@
     type: sum
     sql: ${TABLE}."connectyard_learner"
 
-  - measure: day_of_course
-    type: sum
+  - dimension: day_of_course
+    hidden: true
+    type: number
     sql: ${TABLE}."DAY_OF_COURSE"
 
   - measure: dictionary
@@ -153,13 +165,22 @@
     type: sum
     sql: ${TABLE}."FAQ"
 
+  - measure: flashcards_base
+    type: number
+    sql: ${TABLE}."FLASHCARDS" + ${TABLE}."FLASHCARD" + ${TABLE}."flash_cards"
+    
   - measure: flashcards_total
     type: sum
-    sql: ${TABLE}."FLASHCARDS" + ${TABLE}."FLASHCARD" + ${TABLE}."flash_cards"
+    sql: ${flashcards_base}
     
   - measure: flashcards
     type: percent_of_total
     sql: ${flashcards_total}
+    value_format: 0.00\%
+    
+  - measure: flashcards_avg
+    type: average
+    sql: ${flashcards_base}
     value_format: 0.00\%
 
   - measure: flashnotes
@@ -195,13 +216,22 @@
     type: sum
     sql: ${TABLE}."HIDE"
 
+  - measure: highlight_base
+    type: number
+    sql: ${TABLE}."HIGHLIGHT3" + ${TABLE}."HIGHLIGHT4"
+
   - measure: highlight_total
     type: sum
-    sql: ${TABLE}."HIGHLIGHT3" + ${TABLE}."HIGHLIGHT4"
+    sql: ${highlight_base}
 
   - measure: highlight
     type: percent_of_total
     sql: ${highlight_total}
+    value_format: 0.00\%
+    
+  - measure: highlight_avg
+    type: average
+    sql: ${highlight_base}
     value_format: 0.00\%
     
   - measure: homework_total
@@ -250,15 +280,24 @@
     type: string
     sql: ${TABLE}."LENGTH_OF_COURSE"
 
+  - measure: login_base
+    type: number
+    sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
+
   - measure: login_total
     type: sum
-    sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
+    sql: ${login_base}
     
   - measure: login
     type: percent_of_total
     sql: ${login_total}
-    value_format: 0.00\%
+    value_format: "0.00%"
 
+  - measure: login_avg
+    type: average
+    sql: ${login_base}
+    value_format: "0.0"
+    
   - measure: media
     type: sum
     sql: ${TABLE}."MEDIA3" + ${TABLE}."MEDIA4"
