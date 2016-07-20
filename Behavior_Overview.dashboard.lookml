@@ -54,8 +54,8 @@
     point_style: circle
     interpolation: linear
     
-  - name: add_a_unique_name_1468948119129
-    title: Behavior_Comparison:_Started_below-average_ended_good. 
+  - name: Behavior Comparison
+    title: Started below-average ended_good. 
     type: looker_line
     model: test
     explore: full_student_course_metrics
@@ -90,8 +90,8 @@
     point_style: none
     interpolation: linear
     
-  - name: add_a_unique_name_1468949276676
-    title: Untitled Visualization
+  - name: Activity Comparison
+    title: Activities that improved outcome
     type: looker_column
     model: test
     explore: full_student_course_metrics
