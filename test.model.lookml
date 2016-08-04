@@ -1,4 +1,4 @@
-- connection: snowflake_dw
+- connection: snowflake_prod
 - label: 'Cengage Data on Snowflake'
 
 - include: "*.view.lookml"       # include all the views
