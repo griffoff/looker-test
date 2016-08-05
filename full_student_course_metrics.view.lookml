@@ -26,6 +26,12 @@
     type: average
     sql: (${duration_base} / ${login_count_base})
     value_format: "0.00"
+    
+  - measure: Active_Days
+    label: 'Active_Days'
+    type: average
+    sql: ${TABLE}.Active_days_Logins
+    value_format: "0.00"    
   
   - measure: duration_percent_of_total
     label: 'Duration (% of total)'
