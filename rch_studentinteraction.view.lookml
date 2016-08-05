@@ -2,74 +2,40 @@
   label: 'All Student Interactions - RAW'
   sql_table_name: DW.RCH_STUDENTINTERACTION
   fields:
-  
-  - dimension: authors
-    type: string
-    sql: ${TABLE}."AUTHORS"
-
-  - dimension: cengageacademicterm
-    type: string
-    sql: ${TABLE}."CENGAGEACADEMICTERM"
-
-  - dimension: city
-    type: string
-    sql: ${TABLE}."CITY"
-
-  - dimension: course
-    type: string
-    sql: ${TABLE}."COURSE"
-
-  - dimension: coursearea
-    type: string
-    sql: ${TABLE}."COURSEAREA"
 
   - dimension: coursekey
+    hidden: true
     type: string
     sql: ${TABLE}."COURSEKEY"
-
-  - dimension: coursename
-    type: string
-    sql: ${TABLE}."COURSENAME"
-
-  - dimension: discipline
-    type: string
-    sql: ${TABLE}."DISCIPLINE"
-
-  - dimension: duration
-    type: string
-    sql: ${TABLE}."DURATION"
 
   - dimension: event_day
     type: string
     sql: ${TABLE}."EVENT_DAY"
 
+  - measure: day_count
+    hidden: true
+    type: count_distinct
+    sql: ${TABLE}."EVENT_DAY"
+
   - dimension: institutionname
+    group_label: 'Institution'
     type: string
     sql: ${TABLE}."INSTITUTIONNAME"
 
-  - dimension: isbn
+  - dimension: city
+    group_label: 'Institution'
     type: string
-    sql: ${TABLE}."ISBN"
-
-  - dimension: learningcourse
-    type: string
-    sql: ${TABLE}."LEARNINGCOURSE"
-
-  - dimension: majorsubjectmatter
-    type: string
-    sql: ${TABLE}."MAJORSUBJECTMATTER"
-
-  - dimension: minorsubjectmatter
-    type: string
-    sql: ${TABLE}."MINORSUBJECTMATTER"
-
+    sql: ${TABLE}."CITY"
+  
   - dimension: postalcode
+    group_label: 'Institution'
     type: string
     sql: ${TABLE}."POSTALCODE"
-
-  - dimension: productfamily
+    
+  - dimension: isbn
+    hidden: true
     type: string
-    sql: ${TABLE}."PRODUCTFAMILY"
+    sql: ${TABLE}."ISBN"
 
   - dimension: ref_id
     type: string
@@ -83,14 +49,31 @@
     type: string
     sql: ${TABLE}."SESSION"
 
-  - dimension: title
-    type: string
-    sql: ${TABLE}."TITLE"
-
   - dimension: user_guid
+    hidden: true
     type: string
     sql: ${TABLE}."USER_GUID"
+    
+  - dimension: length_of_course
+    type: tier
+    tiers: [80, 190, 366]
+    style: integer
+    sql: ${TABLE}."LENGTH_OF_COURSE"
 
+  - measure: duration_base
+    hidden: true
+    type: number
+    sql: ${TABLE}."DURATION"
+    
+  - measure: duration_total
+    type: sum
+    sql: ${duration_base}
+    
+  - measure: duration_avg
+    type: average
+    sql: ${duration_base}
+    value_format: "0.0"
+    
   - measure: activity_base
     hidden: true
     type: number
@@ -100,7 +83,7 @@
     type: sum
     sql: ${activity_base}
 
-  - measure: activity
+  - measure: activity_percent_of_total
     type: percent_of_total
     sql: ${activity_total}
     value_format: 0.00\%
@@ -118,7 +101,7 @@
     type: sum
     sql: ${TABLE}."ASSESSMENT"
   
-  - measure: assessment
+  - measure: assessment_percent_of_total
     type: percent_of_total
     sql: ${assessment_total}
     value_format: 0.00\%
@@ -131,7 +114,7 @@
     type: sum
     sql: ${TABLE}."BOOKMARK" + ${TABLE}."BOOKMARKS"
     
-  - measure: bookmark
+  - measure: bookmark_percent_of_total
     type: percent_of_total
     sql: ${bookmark_total}
     value_format: 0.00\%
@@ -173,7 +156,7 @@
     type: sum
     sql: ${flashcards_base}
     
-  - measure: flashcards
+  - measure: flashcards_percent_of_total
     type: percent_of_total
     sql: ${flashcards_total}
     value_format: 0.00\%
@@ -207,7 +190,7 @@
     type: sum
     sql: ${TABLE}."GRADEBOOK"
     
-  - measure: gradebook
+  - measure: gradebook_percent_of_total
     type: percent_of_total
     sql: ${gradebook_total}
     value_format: 0.00\%
@@ -224,7 +207,7 @@
     type: sum
     sql: ${highlight_base}
 
-  - measure: highlight
+  - measure: highlight_percent_of_total
     type: percent_of_total
     sql: ${highlight_total}
     value_format: 0.00\%
@@ -232,13 +215,18 @@
   - measure: highlight_avg
     type: average
     sql: ${highlight_base}
-    value_format: 0.00\%
+    value_format: "0.0"
+    
+  - measure: highlights_per_student
+    type: number
+    sql: ${highlight_total} / nullif(${dim_user.count}, 0)
+    value_format: "0.0"
     
   - measure: homework_total
     type: sum
     sql: ${TABLE}."HOMEWORK"
 
-  - measure: homework
+  - measure: homework_percent_of_total
     type: percent_of_total
     sql: ${homework_total}
     value_format: 0.00\%
@@ -247,7 +235,7 @@
     type: sum
     sql: ${TABLE}."inline_assignment"
     
-  - measure: inline_assignment
+  - measure: inline_assignment_percent_of_total
     type: percent_of_total
     sql: ${inline_assignment_total}
     value_format: 0.00\%
@@ -276,10 +264,6 @@
     type: sum
     sql: ${TABLE}."LAUNCH"
 
-  - dimension: length_of_course
-    type: string
-    sql: ${TABLE}."LENGTH_OF_COURSE"
-
   - measure: login_base
     type: number
     sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
@@ -288,7 +272,7 @@
     type: sum
     sql: ${login_base}
     
-  - measure: login
+  - measure: login_percent_of_total
     type: percent_of_total
     sql: ${login_total}
     value_format: "0.00%"
@@ -296,6 +280,11 @@
   - measure: login_avg
     type: average
     sql: ${login_base}
+    value_format: "0.0"
+    
+  - measure: logins_per_student
+    type: number
+    sql: ${login_total} / nullif(${dim_user.count}, 0)
     value_format: "0.0"
     
   - measure: media
@@ -334,7 +323,7 @@
     type: sum
     sql: ${TABLE}."PAGES_READ"
     
-  - measure: pages_read
+  - measure: pages_read_percent_of_total
     type: percent_of_total
     sql: ${pages_read_total}
     value_format: 0.00\%
@@ -355,7 +344,7 @@
     type: sum
     sql: ${TABLE}."READING3" + ${TABLE}."READING4"
     
-  - measure: reading
+  - measure: reading_percent_of_total
     type: percent_of_total
     sql: ${reading_total}
     value_format: 0.00\%
@@ -400,7 +389,7 @@
     type: sum
     sql: ${TABLE}."time_in_mindtap" + ${TABLE}."TIME-IN-MINDTAP"
     
-  - measure: time_in_mindtap
+  - measure: time_in_mindtap_percent_of_total
     type: percent_of_total
     sql: ${time_in_mindtap_total}
     value_format: 0.00\%
@@ -417,10 +406,19 @@
     type: sum
     sql: ${TABLE}."web_link"
 
-  - measure: youseeu
-    type: sum
+  - measure: youseeu_base
+    hidden: true
+    type: number
     sql: ${TABLE}."YOUSEEU"
-
+    
+  - measure: youseeu_total
+    type: sum
+    sql: ${youseeu_base}
+  
+  - measure: youseeu_avg
+    type: average
+    sql: ${youseeu_base}
+  
   - measure: count
     type: count
     drill_fields: [coursename, institutionname]
