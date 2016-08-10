@@ -27,11 +27,22 @@
     sql: (${duration_base} / ${login_count_base})
     value_format: "0.00"
     
+ 
+
+  - measure: Active_Days_base
+    label: 'Active_Days  (excluding zero)'
+    group_label: 'Base Measures'
+    type: number
+    sql: NULLIF(${TABLE}.Active_days_Logins, 0)
+    
+
   - measure: Active_Days
-    label: 'Active_Days'
     type: average
-    sql: ${TABLE}.Active_days_Logins
-    value_format: "0.00"    
+    sql: ${Active_Days_base} 
+    
+  - measure: Active_Days_total
+    type: sum
+    sql: ${Active_Days_base}     
   
   - measure: duration_percent_of_total
     label: 'Duration (% of total)'
@@ -279,7 +290,13 @@
     type: number
     sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then login_count end) > 0 then ( avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(login_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(login_count,0) end) )-1     else 0 end
     value_format: 0.0%
-    
+
+  - measure: Active_diff
+    label: 'Active: Good vs Below Average'
+    group_label: 'Diffs: Good vs Below Average'
+    type: number
+    sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then Active_days_Logins end) > 0 then ( avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(Active_days_Logins,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(Active_days_Logins,0) end) )-1     else 0 end
+    value_format: 0.0%    
   #- measure: flashcard_count_diff
   #  label: 'Flashcards: Good vs Below Average'
   #  group_label: 'Diffs: Good vs Below Average'
@@ -301,6 +318,13 @@
   #  group_label: 'Final Outcome Good vs Below-Average'
   #  sql: case when avg(case when Final_TYPE_OF_STUDENT = 'below-average' then search_count end) > 0 then  (avg(case when Final_TYPE_OF_STUDENT = 'good' then nullif(search_count,0) end)/avg(case when Final_TYPE_OF_STUDENT = 'below-average' then nullif(search_count,0) end))-1 else 0 end
   #  value_format: 0.0%
+  - measure: active_days_count_D_F_G
+    type: number
+    label: 'Degraded from Good: Active'
+    group_label: 'Degraders Usage Difference: Initial Good'
+    sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then Active_days_Logins end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then Active_days_Logins end), 0) -1
+    value_format: 0.0% 
+    
   - measure: flashcard_count_D_F_G
     type: number
     label: 'Degraded from Good: Flashcard'
@@ -335,7 +359,33 @@
     group_label: 'Degraders Usage Difference: Initial Good'
     sql: avg(case when Final_TYPE_OF_STUDENT != 'good' and Initial_Type_of_Student = 'good' then reading_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('below-average', 'average') and Initial_Type_of_Student = 'good' then reading_count end), 0) -1
     value_format: 0.0%     
-    
+
+  - measure: active_days_diff_G_BA_numerator
+    type: number
+    label: 'Improved to Good: Active Numerator'
+    group_label: 'Improvers Usage Difference: Final Good'
+    description: 'Difference in usage for students who started with not good scores but ended up with a final good score, compared to those who started the same but did not end up with a good final score: (final type = good, initial_type != good) vs (final_type not good or average, initial type != good)'
+    sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then Active_days_Logins end)
+    value_format: 0.0%   
+     
+  - measure: active_days_diff_G_BA_denominator
+    type: number
+    label: 'Improved to Good: Active Denominator'
+    group_label: 'Improvers Usage Difference: Final Good'
+    description: 'Difference in usage for students who started with not good scores but ended up with a final good score, compared to those who started the same but did not end up with a good final score: (final type = good, initial_type != good) vs (final_type not good or average, initial type != good)'
+    sql: avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then Active_days_Logins end)
+    value_format: 0.0%
+       
+  - measure: active_days_diff_G_BA
+    type: number
+    label: 'Improved to Good: Active'
+    group_label: 'Improvers Usage Difference: Final Good'
+    description: 'Difference in usage for students who started with not good scores but ended up with a final good score, compared to those who started the same but did not end up with a good final score: (final type = good, initial_type != good) vs (final_type not good or average, initial type != good)'
+    sql: ${active_days_diff_G_BA_numerator}/nullif(${active_days_diff_G_BA_denominator},0) -1
+    value_format: 0.0%
+
+
+
   - measure: highlight_diff_G_BA
     type: number
     label: 'Improved to Good: Highlights'
@@ -343,7 +393,7 @@
     description: 'Difference in usage for students who started with not good scores but ended up with a final good score, compared to those who started the same but did not end up with a good final score: (final type = good, initial_type != good) vs (final_type not good or average, initial type != good)'
     sql: avg(case when Final_TYPE_OF_STUDENT = 'good' and Initial_Type_of_Student != 'good' then highlight_count end)/nullif(avg(case when Final_TYPE_OF_STUDENT not in ('good', 'average') and Initial_Type_of_Student != 'good' then highlight_count end), 0) -1
     value_format: 0.0%
-  
+    
   - measure: search_count_G_BA
     type: number
     label: 'Improved to Good: Search'
