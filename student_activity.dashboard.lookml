@@ -2,11 +2,11 @@
   title: Student Activity
   layout: grid
   rows:
-    - elements: [course_list]
-      height: 200
     - elements: [student_activity, course_activity, discipline_activity]
       height: 500
-
+    - elements: [course_list]
+      height: 200
+    
   filters:
   - name: filter_start_date
     title: 'Course Start'
