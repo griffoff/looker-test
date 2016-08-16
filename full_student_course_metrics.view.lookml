@@ -252,6 +252,16 @@
     hidden: true
     sql: case when initial_type_of_student = 'good' then 1 when initial_type_of_student = 'average' then 2 when initial_type_of_student = 'below-average' then 3 when initial_type_of_student = 'no-grade' then 4 when initial_type_of_student = 'no-interactions' then 5 end     
 
+  - dimension: week1_initial_type_of_student
+    type: string
+    sql: ${TABLE}.week1_initial_type_of_student
+    order_by_field: week1_initial_type_of_student_sort    
+    
+  - dimension: week1_initial_type_of_student_sort
+    type: number
+    hidden: true
+    sql: case when week1_initial_type_of_student = 'good' then 1 when week1_initial_type_of_student = 'average' then 2 when week1_initial_type_of_student = 'below-average' then 3 when week1_initial_type_of_student = 'no-grade' then 4 when week1_initial_type_of_student = 'no-interactions' then 5 end     
+
   - dimension: Students_Who_End_Up 
     type: string
     sql: ${TABLE}.final_label        
@@ -425,6 +435,9 @@
   - measure: good_count
     type: number
     sql: sum(case when Final_TYPE_OF_STUDENT = 'good' then 1 end)
+  
+  - measure: cntr
+    type: count
 
   - measure: below_average_count
     type: number
