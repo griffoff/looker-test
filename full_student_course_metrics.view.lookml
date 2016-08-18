@@ -12,6 +12,9 @@
     type: number
     sql: NULLIF(${TABLE}.DURATION, 0)
 
+
+    
+    
   - measure: duration
     label: 'Avg. Duration'
     type: average
@@ -27,7 +30,11 @@
     sql: (${duration_base} / ${login_count_base})
     value_format: "0.00"
     
- 
+  - measure: duration_per_active_day
+    label: 'Avg. active duration'
+    type: average
+    sql: (${duration_base} / ${frequency_base})
+    value_format: "0.00"
 
   - measure: Active_Days_base
     label: 'Active_Days  (excluding zero)'
@@ -77,6 +84,11 @@
     group_label: 'Base Measures'
     type: number
     sql: NULLIF(${TABLE}.search_COUNT, 0)
+    
+    
+  - measure: frequency_base
+    type: number
+    sql: NULLIF(${TABLE}.FREQUENCY,0)
     
   - measure: search_count
     type: average

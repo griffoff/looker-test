@@ -172,7 +172,4 @@
     - join: dim_user
       sql_on: ${user_guid} = ${dim_user.user_guid}
       relationship: many_to_one
-    - join: rch_studentinteraction
-      sql_on: ${user_guid} = ${rch_studentinteraction.user_guid} and ${coursekey} = ${rch_studentinteraction.coursekey} and ${weeksname} = ${rch_studentinteraction.week_of_course}
-      relationship: one_to_many
-      
+  
