@@ -7,6 +7,58 @@
 
   elements:
 
+  - name: RFI_good
+    title: RFI_Good
+    type: looker_column
+    model: test
+    explore: student_course_metrics
+    dimensions: [student_course_metrics.weeksname, student_course_metrics.octant]
+    pivots: [student_course_metrics.octant]
+    measures: [student_course_metrics.count]
+    filters:
+      student_course_metrics.type_of_student: good
+      student_course_metrics.weeksnamesort: '[0, 20]'
+    sorts: [student_course_metrics.weeksname, student_course_metrics.type_of_student,
+      student_course_metrics.octant, student_course_metrics.octant_sort]
+    limit: '500'
+    column_limit: '50'
+    query_timezone: America/Los_Angeles
+    stacking: percent
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    series_colors:
+      N/A: black
+      '...': gray
+      RFI: green
+      .F.: blue
+      ..I: orange
+
+  - name: RFI_below_average
+    title: RFI_Below_Average
+    type: looker_column
+    model: test
+    explore: student_course_metrics
+    dimensions: [student_course_metrics.weeksname, student_course_metrics.octant]
+    pivots: [student_course_metrics.octant]
+    measures: [student_course_metrics.count]
+    filters:
+      student_course_metrics.type_of_student: below-average
+      student_course_metrics.weeksnamesort: '[0, 20]'
+    sorts: [student_course_metrics.weeksname, student_course_metrics.type_of_student,
+      student_course_metrics.octant, student_course_metrics.octant_sort]
+    limit: '500'
+    column_limit: '50'
+    query_timezone: America/Los_Angeles
+    stacking: percent
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    series_colors:
+      N/A: black
+      '...': gray
+      RFI: green
+      .F.: blue
+      ..I: orange
+
 
   - name: highlight_good
     title: Good 

@@ -210,6 +210,57 @@
     y_axis_scale_mode: linear
     point_style: none
     interpolation: linear
+    
+  - name: Session_over_LoginCount
+    title: Session_over_LoginCount
+    type: looker_line
+    model: test
+    explore: full_student_course_metrics
+    dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
+    pivots: [full_student_course_metrics.final_type_of_student]
+    measures: [full_student_course_metrics.login_count, full_student_course_metrics.duration_per_login]
+    dynamic_fields:
+    - table_calculation: durationlogin_count
+      label: duration/login_count
+      expression: ${full_student_course_metrics.duration_per_login}/${full_student_course_metrics.login_count}
+    filters:
+      full_student_course_metrics.weeksnamesort: '[0, 16]'
+    sorts: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student,
+      full_student_course_metrics.final_type_of_student_sort]
+    limit: '500'
+    column_limit: '50'
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: left
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    show_null_points: true
+    point_style: none
+    interpolation: linear
+    series_types: {}
+    hidden_series: [good - Full Student Course Metrics Login Count, good - Full Student Course Metrics Avg. Session Time,
+      average - Full Student Course Metrics Login Count, average - Full Student Course Metrics Avg. Session Time,
+      below-average - Full Student Course Metrics Login Count, below-average - Full Student Course Metrics Avg. Session Time]
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    series_colors:
+      good - duration/login_count: green
+      average - duration/login_count: orange
+      below-average - duration/login_count: red
+    
 
   - name: Active_days_good_v_ba
     title: Activity usage of Good Students vs Below-Average

@@ -25,6 +25,15 @@
   - dimension: octant
     type: string
     sql: ${TABLE}.OCTANT
+    order_by_field: octant_sort
+  
+    
+  - dimension: octant_sort
+    type: number
+    hidden: true
+    sql: case when octant = 'RFI' then 1 when octant = 'R.I' then 2 when octant = '.FI' then 3 when octant = '..I' then 4 when octant = 'RF.' then 5 when octant = 'R..' then 6 when octant = '.F.' then 7 when octant = '...' then 8 when octant = 'N/A' then 9 end     
+    
+    
 
   - measure: pages_read
     type: average
