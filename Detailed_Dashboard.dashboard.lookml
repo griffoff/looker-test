@@ -9,7 +9,7 @@
 
   - name: Active_days_good_v_ba
     title: Activity usage of Good Students vs Below-Average
-    type: looker_column
+    type: looker_line
     model: test
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
@@ -18,6 +18,8 @@
       full_student_course_metrics.weeksnamesort: '[0, 20]'
     sorts: [full_student_course_metrics.weeksname]
     limit: 500
+    column_limit: '50'
+    query_timezone: America/Los_Angeles
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -30,11 +32,16 @@
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
     show_x_axis_label: true
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
+    show_null_points: true
+    point_style: none
+    interpolation: linear
     show_null_labels: false
+    series_types: {}
 
 
   - name: Improved_to_good_Active

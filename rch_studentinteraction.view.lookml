@@ -59,6 +59,10 @@
     tiers: [80, 190, 366]
     style: integer
     sql: ${TABLE}."LENGTH_OF_COURSE"
+    
+  - dimension: raw_length_of_course
+    type: number
+    sql: ${TABLE}."LENGTH_OF_COURSE"    
 
   - measure: duration_base
     hidden: true
@@ -131,6 +135,11 @@
     hidden: true
     type: number
     sql: ${TABLE}."DAY_OF_COURSE"
+    
+  - dimension: week_of_course
+    hidden: true
+    type: number
+    sql: replace('Week #','#',floor((${TABLE}."DAY_OF_COURSE"-1)/7))
 
   - measure: dictionary
     type: sum
@@ -268,6 +277,10 @@
     type: number
     sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
 
+  - measure: raw_login_total
+    type: sum
+    sql: ${login_base}
+    
   - measure: login_total
     type: sum
     sql: ${login_base}

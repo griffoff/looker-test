@@ -90,6 +90,11 @@
     sql: ${TABLE}.STARTDATEKEY
     hidden: true
 
+  - dimension: length_of_course
+    type: number
+    sql: case when startdatekey > 0 and enddatekey > 0 then datediff(day,to_date((startdatekey::varchar),'YYYYMMDD'),to_date((enddatekey::varchar),'YYYYMMDD')) else 0 end
+    hidden: false
+
   - measure: count
     label: 'No. of Courses'
     type: count
