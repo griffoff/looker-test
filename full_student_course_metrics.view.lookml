@@ -298,6 +298,11 @@
   - measure: count
     type: count
     drill_fields: [weeksname]
+  
+  - measure: count_Students
+    type: count_distinct
+    sql: ${TABLE}.user_guid
+    
     
   - measure: highlight_diff
     label: 'Highlights: Good vs Below Average'
