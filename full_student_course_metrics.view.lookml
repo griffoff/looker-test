@@ -6,6 +6,16 @@
     type: string
     sql: ${TABLE}.COURSEKEY
     
+  - dimension: recency_raw
+    type: number
+    sql: ${TABLE}.RECENCY  
+    
+  - dimension: recency_tier    
+    type: tier
+    style: relational
+    tiers: [0.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]
+    sql: ${TABLE}.RECENCY  
+    
   - measure: duration_base
     label: 'Duration (excluding zero)'
     group_label: 'Base Measures'
