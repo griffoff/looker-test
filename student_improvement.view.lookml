@@ -13,6 +13,14 @@
   - dimension: frequency
     type: string
     sql: ${TABLE}.FREQUENCY
+    
+  - dimension: duration
+    type: string
+    sql: ${TABLE}.DURATION
+    
+  - dimension: login_count
+    type: string
+    sql: ${TABLE}.LOGIN_COUNT
 
   - dimension: initial_type_of_student
     type: string

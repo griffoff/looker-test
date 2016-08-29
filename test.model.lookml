@@ -172,4 +172,7 @@
     - join: dim_user
       sql_on: ${user_guid} = ${dim_user.user_guid}
       relationship: many_to_one
+      
+- explore: student_improvement
+  label: 'Data Science - Student Improvement'      
   
