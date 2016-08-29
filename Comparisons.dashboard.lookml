@@ -43,7 +43,7 @@
     point_style: none
     interpolation: linear
     series_types: {}
-    y_axis_max: ['500']
+    y_axis_max: ['1000']
     
   - name: Degraded to Below Average - Recency 
     title: Degraded to Below Average - Recency 
@@ -80,7 +80,7 @@
     point_style: none
     interpolation: linear
     series_types: {}
-    y_axis_max: ['500']
+    y_axis_max: ['1000']
     
   - name: Improved to Good - Frequency 
     title: Improved to Good - Frequency 
