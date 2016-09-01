@@ -25,6 +25,9 @@
     - join: course_density
       relationship: one_to_one
       sql_on:  ${dim_course.coursekey} = ${course_density.coursekey}
+    - join: dim_institution
+      relationship: many_to_one
+      sql_on: ${dim_course.institutionid} = ${dim_institution.institutionid}
 
 - explore: dim_course_rs
   extension: required

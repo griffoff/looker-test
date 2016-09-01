@@ -38,14 +38,17 @@
     type: string
     sql: ${TABLE}.INSTITUTIONID
     primary_key: true
+    hidden: true
 
   - dimension: institutionname
+    label: 'Institution Name'
     type: string
     sql: ${TABLE}.INSTITUTIONNAME
 
   - dimension: locationid
     type: string
     sql: ${TABLE}.LOCATIONID
+    hidden: true
 
   - dimension: marketsegmentmajor
     type: string
