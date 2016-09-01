@@ -22,7 +22,9 @@
     type: number
     sql: NULLIF(${TABLE}.DURATION, 0)
 
-
+  - measure: pct
+    type: percent_of_total
+    sql: ${count}
     
     
   - measure: duration

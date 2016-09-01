@@ -22,6 +22,9 @@
     - join: dim_productplatform
       relationship: many_to_one
       sql_on: ${dim_course.productplatformid} = ${dim_productplatform.productplatformid}
+    - join: course_density
+      relationship: one_to_one
+      sql_on:  ${dim_course.coursekey} = ${course_density.coursekey}
 
 - explore: dim_course_rs
   extension: required
