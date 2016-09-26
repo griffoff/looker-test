@@ -5,7 +5,7 @@
 - include: "*.dashboard.lookml"  # include all the dashboards
 
 - explore: dim_product
-  
+  hidden: true
 
 - explore: dim_course
   extension: required

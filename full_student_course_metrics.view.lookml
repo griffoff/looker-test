@@ -35,7 +35,19 @@
   - measure: duration_total
     type: sum
     sql: ${duration_base}
+    
+  - measure: duration_total_corr
+    label: 'Duration vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${duration_base}, ${Final_score_base})
   
+  - measure: login_count_corr
+    label: 'Logins vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${login_count_base}, ${Final_score_base})
+    
   - measure: duration_per_login
     label: 'Avg. Session Time'
     type: average
@@ -54,10 +66,15 @@
     type: number
     sql: NULLIF(${TABLE}.Active_days_Logins, 0)
     
-
   - measure: Active_Days
     type: average
     sql: ${Active_Days_base} 
+    
+  - measure: active_days_total_corr
+    label: 'Active Days vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${Active_Days_base}, ${Final_score_base})
     
   - measure: Active_Days_total
     type: sum
@@ -75,6 +92,12 @@
     group_label: 'Base Measures'
     type: number
     sql: NULLIF(${TABLE}.FLASHCARD_COUNT, 0)
+    
+  - measure: flashcard_total_corr
+    label: 'Flashcard vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${flashcard_base}, ${Final_score_base})
 
   - measure: flashcard_count
     type: average
@@ -97,10 +120,21 @@
     type: number
     sql: NULLIF(${TABLE}.search_COUNT, 0)
     
+  - measure: search_total_corr
+    label: 'Search vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${search_count_base}, ${Final_score_base})   
     
   - measure: frequency_base
     type: number
     sql: NULLIF(${TABLE}.FREQUENCY,0)
+    
+  - measure: frequency_total_corr
+    label: 'Frequency vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${frequency_base}, ${Final_score_base})   
     
   - measure: search_count
     type: average
@@ -131,6 +165,12 @@
     type: number
     sql: NULLIF(${TABLE}.HIGHLIGHT_COUNT, 0)
     
+  - measure: highlight_total_corr
+    label: 'Highlight vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${highlight_count_base}, ${Final_score_base})   
+    
   - measure: highlight_count
     type: average
     sql: ${highlight_count_base} 
@@ -145,10 +185,21 @@
     type: percent_of_total
     sql: ${highlight_total}
     value_format: 0.00\%
+    
+  - measure: intensity_base
+    type: number
+    sql: ${TABLE}.INTENSITY
+    hidden: true
+    
+  - measure: intensity_total_corr
+    label: 'Intensity vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${intensity_base}, ${Final_score_base})   
   
   - measure: intensity
     type: average
-    sql: ${TABLE}.INTENSITY
+    sql: ${intensity_base}
     
   - measure: login_count_base
     label: 'Login Count (excluding zero)'
@@ -181,6 +232,12 @@
     group_label: 'Base Measures'
     type: number
     sql: NULLIF(${TABLE}.PAGES_READ, 0)
+    
+  - measure: pages_read_corr
+    label: 'Pages Read vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${pages_read_base}, ${Final_score_base})   
 
   - measure: pages_read
     type: average
@@ -218,21 +275,37 @@
     sql: ${reading_total}
     value_format: 0.00\%
 
+  - measure: recency_base
+    type: number
+    sql: ${TABLE}.RECENCY
+    hidden: true
+    
+  - measure: recency_corr
+    label: 'Recency vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${recency_base}, ${Final_score_base})   
+
   - measure: recency
     type: average
-    sql: ${TABLE}.RECENCY
-
+    sql: ${recency_base}
+    
   - measure: score
     label: 'Avg. Weekly Score'
     group_label: 'Scores'
     type: average
     sql: ${TABLE}.SCORE
     
+  - measure: Final_score_base
+    type: number
+    sql: ${TABLE}.final_score    
+    hidden: true
+    
   - measure: Final_score
     label: 'Final Score'
     group_label: 'Scores'
     type: average
-    sql: ${TABLE}.final_score    
+    sql: ${Final_score_base}    
     value_format: 0.00%
     html: | 
       {% if full_student_course_metrics.final_type_of_student._value == 'good' %}
