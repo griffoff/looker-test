@@ -98,7 +98,47 @@
     group_label: 'Correlation'
     type: number
     sql: CORR(${flashcard_base}, ${Final_score_base})
-
+    
+  - measure: r_f_i_base
+    type: number
+    sql: ${recency_base} + ${frequency_base} + ${intensity_base}
+    
+  - measure: r_i_base
+    type: number
+    sql: ${recency_base} + ${intensity_base}
+  
+  - measure: r_f_base
+    type: number
+    sql: ${recency_base} + ${frequency_base}
+  
+  - measure: f_i_base
+    type: number
+    sql: ${frequency_base} + ${intensity_base}
+  
+  - measure: r_f_i_total_corr
+    label: 'R+F+I vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${r_f_i_base}, ${Final_score_base})
+    
+  - measure: r_i_total_corr
+    label: 'R+I vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${r_i_base}, ${Final_score_base})
+  
+  - measure: r_f_total_corr
+    label: 'R+F vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${r_f_base}, ${Final_score_base})
+  
+  - measure: f_i_total_corr
+    label: 'F+I vs Score Correlation'
+    group_label: 'Correlation - RFI'
+    type: number
+    sql: CORR(${f_i_base}, ${Final_score_base})
+  
   - measure: flashcard_count
     type: average
     sql: ${flashcard_base}
@@ -135,6 +175,13 @@
     group_label: 'Correlation - RFI'
     type: number
     sql: CORR(${frequency_base}, ${Final_score_base})   
+    
+  - measure: frequency_regr
+    label: 'Frequency vs Score Regression'
+    group_label: 'Regression - RFI'
+    type: number
+    sql: REGR_R2(${Final_score_base}, ${frequency_base})   
+    value_format: '0.0%'
     
   - measure: search_count
     type: average
@@ -195,7 +242,14 @@
     label: 'Intensity vs Score Correlation'
     group_label: 'Correlation - RFI'
     type: number
-    sql: CORR(${intensity_base}, ${Final_score_base})   
+    sql: CORR(${intensity_base}, ${Final_score_base}) 
+  
+  - measure: intensity_regr
+    label: 'Intensity vs Score Regression'
+    group_label: 'Regression - RFI'
+    type: number
+    sql: REGR_R2(${Final_score_base}, ${intensity_base})   
+    value_format: '0.0%'
   
   - measure: intensity
     type: average
@@ -267,6 +321,12 @@
   - measure: reading_total
     type: sum
     sql: ${reading_count_base}
+    
+  - measure: reading_read_corr
+    label: 'Reading vs Score Correlation'
+    group_label: 'Correlation'
+    type: number
+    sql: CORR(${reading_count_base}, ${Final_score_base})
   
   - measure: reading_percent_of_total
     label: 'Reading (% of total)'
@@ -285,6 +345,13 @@
     group_label: 'Correlation - RFI'
     type: number
     sql: CORR(${recency_base}, ${Final_score_base})   
+    
+  - measure: recency_regr
+    label: 'Recency vs Score Regression'
+    group_label: 'Regression - RFI'
+    type: number
+    sql: REGR_R2(${Final_score_base}, ${recency_base})   
+    value_format: '0.0%'
 
   - measure: recency
     type: average
@@ -379,7 +446,15 @@
     label: 'Week No.'
     type: number
     sql: split_part(weeksname, ' ', 2)::int
-
+  
+  - dimension: course_stage_percent
+    label: '% through course'
+    type: tier
+    tiers: [10,20,30,40,50,60,70,80,90]
+    style: integer
+    value_format: '0\%'
+    sql: 100*(${weeksnamesort} / nullif(${dim_course.length_of_course_weeks}, 0) )
+    
   - measure: count
     type: count
     drill_fields: [weeksname]

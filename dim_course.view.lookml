@@ -93,6 +93,21 @@
   - dimension: length_of_course
     type: number
     sql: case when startdatekey > 0 and enddatekey > 0 then datediff(day,to_date((startdatekey::varchar),'YYYYMMDD'),to_date((enddatekey::varchar),'YYYYMMDD')) else 0 end
+    value_format: '0 \d\a\y\s'
+    hidden: false
+    
+  - dimension: length_of_course_weeks
+    type: number
+    sql: case when startdatekey > 0 and enddatekey > 0 then datediff(week,to_date((startdatekey::varchar),'YYYYMMDD'),to_date((enddatekey::varchar),'YYYYMMDD')) else 0 end
+    value_format: '0 \w\e\e\k\s'
+    hidden: false
+    
+  - dimension: length_of_course_weeks_buckets
+    type: tier
+    tiers: [12, 16, 18, 20, 52]
+    style: integer
+    sql: ${length_of_course_weeks}
+    value_format: '0 \w\e\e\k\s'
     hidden: false
 
   - measure: count
