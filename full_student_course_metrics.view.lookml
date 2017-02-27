@@ -16,7 +16,7 @@
     tiers: [0.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]
     sql: ${TABLE}.RECENCY  
     
-  - measure: duration_base
+  - dimension: duration_base
     label: 'Duration (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -60,7 +60,7 @@
     sql: (${duration_base} / ${frequency_base})
     value_format: "0.00"
 
-  - measure: Active_Days_base
+  - dimension: Active_Days_base
     label: 'Active_Days  (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -70,7 +70,7 @@
     type: average
     sql: ${Active_Days_base} 
     
-  - measure: active_days_total_corr
+  - dimension: active_days_total_corr
     label: 'Active Days vs Score Correlation'
     group_label: 'Correlation'
     type: number
@@ -87,31 +87,31 @@
     sql: ${duration_total}
     value_format: 0.00\%
     
-  - measure: flashcard_base
+  - dimension: flashcard_base
     label: 'Flashcard (excluding zero)'
     group_label: 'Base Measures'
     type: number
     sql: NULLIF(${TABLE}.FLASHCARD_COUNT, 0)
     
-  - measure: flashcard_total_corr
+  - dimension: flashcard_total_corr
     label: 'Flashcard vs Score Correlation'
     group_label: 'Correlation'
     type: number
     sql: CORR(${flashcard_base}, ${Final_score_base})
     
-  - measure: r_f_i_base
+  - dimension: r_f_i_base
     type: number
     sql: ${recency_base} + ${frequency_base} + ${intensity_base}
     
-  - measure: r_i_base
+  - dimension: r_i_base
     type: number
     sql: ${recency_base} + ${intensity_base}
   
-  - measure: r_f_base
+  - dimension: r_f_base
     type: number
     sql: ${recency_base} + ${frequency_base}
   
-  - measure: f_i_base
+  - dimension: f_i_base
     type: number
     sql: ${frequency_base} + ${intensity_base}
   
@@ -154,7 +154,7 @@
     sql: ${flashcard_total}
     value_format: 0.00\%
     
-  - measure: search_count_base
+  - dimension: search_count_base
     label: 'Search Count (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -166,7 +166,7 @@
     type: number
     sql: CORR(${search_count_base}, ${Final_score_base})   
     
-  - measure: frequency_base
+  - dimension: frequency_base
     type: number
     sql: NULLIF(${TABLE}.FREQUENCY,0)
     
@@ -206,7 +206,7 @@
     type: average
     sql: ${TABLE}.GAP_WEEK
 
-  - measure: highlight_count_base
+  - dimension: highlight_count_base
     label: 'Highlight Count (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -233,7 +233,7 @@
     sql: ${highlight_total}
     value_format: 0.00\%
     
-  - measure: intensity_base
+  - dimension: intensity_base
     type: number
     sql: ${TABLE}.INTENSITY
     hidden: true
@@ -255,7 +255,7 @@
     type: average
     sql: ${intensity_base}
     
-  - measure: login_count_base
+  - dimension: login_count_base
     label: 'Login Count (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -281,7 +281,7 @@
     type: string
     sql: ${TABLE}.OCTANT
 
-  - measure: pages_read_base
+  - dimension: pages_read_base
     label: 'Pages Read Count (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -308,7 +308,7 @@
     sql: ${pages_read}
     value_format: 0.00\%
 
-  - measure: reading_count_base
+  - dimension: reading_count_base
     label: 'Reader Count (excluding zero)'
     group_label: 'Base Measures'
     type: number
@@ -335,7 +335,7 @@
     sql: ${reading_total}
     value_format: 0.00\%
 
-  - measure: recency_base
+  - dimension: recency_base
     type: number
     sql: ${TABLE}.RECENCY
     hidden: true
@@ -363,7 +363,7 @@
     type: average
     sql: ${TABLE}.SCORE
     
-  - measure: Final_score_base
+  - dimension: Final_score_base
     type: number
     sql: ${TABLE}.final_score    
     hidden: true

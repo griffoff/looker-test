@@ -64,7 +64,7 @@
     type: number
     sql: ${TABLE}."LENGTH_OF_COURSE"    
 
-  - measure: duration_base
+  - dimension: duration_base
     hidden: true
     type: number
     sql: ${TABLE}."DURATION"
@@ -78,7 +78,7 @@
     sql: ${duration_base}
     value_format: "0.0"
     
-  - measure: activity_base
+  - dimension: activity_base
     hidden: true
     type: number
     sql: ${TABLE}."ACTIVITY"
@@ -157,7 +157,7 @@
     type: sum
     sql: ${TABLE}."FAQ"
 
-  - measure: flashcards_base
+  - dimension: flashcards_base
     type: number
     sql: ${TABLE}."FLASHCARDS" + ${TABLE}."FLASHCARD" + ${TABLE}."flash_cards"
     
@@ -208,7 +208,7 @@
     type: sum
     sql: ${TABLE}."HIDE"
 
-  - measure: highlight_base
+  - dimension: highlight_base
     type: number
     sql: ${TABLE}."HIGHLIGHT3" + ${TABLE}."HIGHLIGHT4"
 
@@ -273,7 +273,7 @@
     type: sum
     sql: ${TABLE}."LAUNCH"
 
-  - measure: login_base
+  - dimension: login_base
     type: number
     sql: ${TABLE}."LOGIN3" + ${TABLE}."LOGIN4" + ${TABLE}."Mindtap_Login"
 
@@ -419,7 +419,7 @@
     type: sum
     sql: ${TABLE}."web_link"
 
-  - measure: youseeu_base
+  - dimension: youseeu_base
     hidden: true
     type: number
     sql: ${TABLE}."YOUSEEU"
