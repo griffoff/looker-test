@@ -6,14 +6,14 @@
       height: 500
     - elements: [course_list]
       height: 200
-    
+
   filters:
   - name: filter_start_date
     title: 'Course Start'
     type: field_filter
     explore: student_course_metrics
     field: dim_start_date.governmentdefinedacademicterm
-  
+
   - name: filter_discipline
     title: 'Discipline'
     type: field_filter
@@ -21,7 +21,7 @@
     field: dim_product.discipline
     listen:
       filter_start_date: dim_start_date.governmentdefinedacademicterm
-      
+
   - name: filter_course
     title: 'CourseKey'
     type: field_filter
@@ -31,7 +31,7 @@
     listen:
       filter_start_date: dim_start_date.governmentdefinedacademicterm
       filter_discipline: dim_product.discipline
-    
+
   - name: filter_student
     title: 'Student'
     type: field_filter
@@ -113,7 +113,7 @@
     show_null_points: true
     point_style: circle
     interpolation: linear
-    
+
 
   - name: course_activity
     title: Course Activity
@@ -162,7 +162,7 @@
     show_null_points: true
     point_style: circle
     interpolation: linear
-    
+
   - name: student_activity
     title: Student Activity
     listen:

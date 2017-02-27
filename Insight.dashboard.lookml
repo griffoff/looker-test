@@ -69,7 +69,7 @@
     y_axis_max: ['.5']
 
     hidden_fields: [full_student_course_metrics.frequency, duration_vs_frequency]
-    
+
   - name: frequency
     title: 'Frequency '
     type: looker_line
@@ -130,7 +130,7 @@
     series_types: {}
     y_axis_max: ['.5']
     hidden_fields: [full_student_course_metrics.duration, duration_vs_frequency]
-   
+
   - name: duration_vs_frequency
     title: 'Duration vs Frequency'
     type: looker_scatter
@@ -193,8 +193,8 @@
     trend_lines: [{regression_type: linear, color: green, period: 7, series_index: 1},
       {regression_type: linear, color: red, period: 7, series_index: 2}]
     hidden_fields: [full_student_course_metrics.duration, full_student_course_metrics.frequency]
-      
-      
+
+
   - name: login_count
     title: 'Login Count'
     type: looker_line
@@ -242,4 +242,3 @@
       below-average - duration/login_count: red
       good: green
       below-average: red
-

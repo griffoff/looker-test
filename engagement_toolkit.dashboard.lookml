@@ -70,4 +70,3 @@
     x_axis_label: Time spent per week
     ordering: none
     show_null_labels: false
-  

@@ -14,21 +14,21 @@
 #  filters:
 
   elements:
-  
+
   - name: highlight_good
-    title: Good 
+    title: Good
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline     
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.flashcard_count, full_student_course_metrics.highlight_count,
       full_student_course_metrics.login_count, full_student_course_metrics.reading_count]
     filters:
       full_student_course_metrics.final_type_of_student: good
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9   
-        
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
+
     sorts: [full_student_course_metrics.weeksname]
     limit: 500
     stacking: percent
@@ -50,20 +50,20 @@
     x_axis_scale: auto
     ordering: none
     show_null_labels: false
-    
+
   - name: highlight_average
-    title: average 
+    title: average
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.flashcard_count, full_student_course_metrics.highlight_count,
       full_student_course_metrics.login_count, full_student_course_metrics.reading_count]
     filters:
       full_student_course_metrics.final_type_of_student: average
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9      
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname]
     limit: 500
     stacking: percent
@@ -85,20 +85,20 @@
     x_axis_scale: auto
     ordering: none
     show_null_labels: false
-    
+
   - name: highlight_below_average
-    title: below-average 
+    title: below-average
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.flashcard_count, full_student_course_metrics.highlight_count,
       full_student_course_metrics.login_count, full_student_course_metrics.reading_count]
     filters:
       full_student_course_metrics.final_type_of_student: below-average
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9      
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname]
     limit: 500
     stacking: percent
@@ -119,16 +119,16 @@
     show_x_axis_ticks: true
     x_axis_scale: auto
     ordering: none
-    show_null_labels: false  
-    
-    
-  
+    show_null_labels: false
+
+
+
   - name: Flashcard
     title: FlashCard Usage by Student Type
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
@@ -165,19 +165,19 @@
     show_null_points: true
     point_style: none
     interpolation: linear
-    
+
   - name: Highlight_usage
     title: Highlight Usage by Student Type
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
     measures: [full_student_course_metrics.highlight_count]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     limit: 500
     column_limit: 50
@@ -208,19 +208,19 @@
     show_null_points: true
     point_style: none
     interpolation: linear
-    
+
   - name: Search_Count
     title: Search Count by Type of Student
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.final_type_of_student, full_student_course_metrics.weeksname]
     pivots: [full_student_course_metrics.final_type_of_student]
     measures: [full_student_course_metrics.search_count]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.final_type_of_student, full_student_course_metrics.weeksname]
     limit: 500
     column_limit: 50
@@ -249,20 +249,20 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     point_style: none
-    interpolation: linear    
-    
+    interpolation: linear
+
   - name: Login_usage
     title: Login Usage by Student Type
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
     measures: [full_student_course_metrics.login_count]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     limit: 500
     column_limit: 50
@@ -293,19 +293,19 @@
     show_null_points: true
     point_style: none
     interpolation: linear
-    
+
   - name: PagesRead_usage
     title: PagesRead Usage by Student Type
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
     measures: [full_student_course_metrics.pages_read]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     limit: 500
     column_limit: 50
@@ -342,13 +342,13 @@
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
     measures: [full_student_course_metrics.reading_count]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     limit: 500
     column_limit: 50
@@ -379,14 +379,14 @@
     show_null_points: true
     point_style: none
     interpolation: linear
-    
+
 
   - name: Duration
     title: Duration by Type of Student
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname, full_student_course_metrics.final_type_of_student]
     pivots: [full_student_course_metrics.final_type_of_student]
@@ -420,16 +420,16 @@
     y_axis_scale_mode: linear
     point_style: none
     interpolation: linear
-    
 
-    
-    
+
+
+
   - name: Count_Good_BelowAverage
     title: Count of Good and Below Average Students
     type: looker_line
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.Weekly_Good_Count, full_student_course_metrics.Weekly_Below_Average_Count]
@@ -446,7 +446,7 @@
     show_view_names: true
     series_colors:
       full_student_course_metrics.Weekly_Below_Average_Count: red
-      full_student_course_metrics.Weekly_Good_Count: green  
+      full_student_course_metrics.Weekly_Good_Count: green
     limit_displayed_rows: false
     y_axis_combined: true
     show_y_axis_labels: true
@@ -457,19 +457,19 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     point_style: none
-    interpolation: linear  
-    
+    interpolation: linear
+
   - name: highlight_delta_good_over_below_average
     title: Comparing Highlight Usage Good Vs Below-Average
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.highlight_diff]
     filters:
-      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9    
+      full_student_course_metrics.weeksname: Week 0%,Week 1%,Week 20%,Week 2,Week 3,Week 4,Week 5, Week 6, Week 7, Week 8,Week 9
     sorts: [full_student_course_metrics.weeksname]
     limit: 500
     stacking: ''
@@ -489,13 +489,13 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-    
+
   - name: login_delta_good_over_below_average
     title: Comparing Login Usage Good Vs Below-Average
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.login_diff]
@@ -520,13 +520,13 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-    
+
   - name: reading_delta_good_over_below_average
     title: Comparing Reading Activities Good Vs Below-Average
     type: looker_column
     model: test
     listen:
-      filter_discipline: dim_product.discipline      
+      filter_discipline: dim_product.discipline
     explore: full_student_course_metrics
     dimensions: [full_student_course_metrics.weeksname]
     measures: [full_student_course_metrics.reading_count_diff]
@@ -551,6 +551,4 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-
-      
 

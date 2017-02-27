@@ -8,7 +8,7 @@
   elements:
 
   - name: Behavior Comparison Starting Below-Average
-    title: Started Below-Average ended Good. 
+    title: Started Below-Average ended Good.
     description: 'Test Description'
     type: looker_line
     model: test
@@ -42,10 +42,10 @@
     y_axis_scale_mode: linear
     show_null_points: true
     point_style: none
-    interpolation: linear    
-    
+    interpolation: linear
+
   - name: Behavior Comparison Starting Good
-    title: Started Good ended Below-Average. 
+    title: Started Good ended Below-Average.
     type: looker_line
     model: test
     explore: full_student_course_metrics
@@ -76,7 +76,7 @@
     show_null_points: true
     point_style: none
     interpolation: linear
-    
+
   - name: Duration_Vs_Login_Count
     title: Duration divided by login count
     type: looker_area
@@ -124,7 +124,7 @@
     point_style: circle
     interpolation: linear
 
-  - name: Activity Comparison 
+  - name: Activity Comparison
     title: Activities that improved outcome
     type: looker_column
     model: test
@@ -210,7 +210,7 @@
     y_axis_scale_mode: linear
     point_style: none
     interpolation: linear
-    
+
   - name: Session_over_LoginCount
     title: Session_over_LoginCount
     type: looker_line
@@ -260,7 +260,7 @@
       good - duration/login_count: green
       average - duration/login_count: orange
       below-average - duration/login_count: red
-    
+
 
   - name: Active_days_good_v_ba
     title: Activity usage of Good Students vs Below-Average
@@ -358,5 +358,4 @@
     y_axis_scale_mode: linear
     show_null_labels: false
 
-    
-    
+

@@ -8,8 +8,8 @@
   elements:
 
 
-  - name: Improved to Good - Recency 
-    title: Improved to Good - Recency 
+  - name: Improved to Good - Recency
+    title: Improved to Good - Recency
     type: looker_line
     model: test
     explore: student_improvement
@@ -44,9 +44,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['1000']
-    
-  - name: Degraded to Below Average - Recency 
-    title: Degraded to Below Average - Recency 
+
+  - name: Degraded to Below Average - Recency
+    title: Degraded to Below Average - Recency
     type: looker_line
     model: test
     explore: student_improvement
@@ -81,9 +81,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['1000']
-    
-  - name: Improved to Good - Frequency 
-    title: Improved to Good - Frequency 
+
+  - name: Improved to Good - Frequency
+    title: Improved to Good - Frequency
     type: looker_line
     model: test
     explore: student_improvement
@@ -118,9 +118,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['21000']
-    
-  - name: Degraded to Below Average - Frequency 
-    title: Degraded to Below Average - Frequency 
+
+  - name: Degraded to Below Average - Frequency
+    title: Degraded to Below Average - Frequency
     type: looker_line
     model: test
     explore: student_improvement
@@ -155,9 +155,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['21000']
-    
-  - name: Improved to Good - login_count 
-    title: Improved to Good - login_count 
+
+  - name: Improved to Good - login_count
+    title: Improved to Good - login_count
     type: looker_line
     model: test
     explore: student_improvement
@@ -192,9 +192,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['5000']
-    
-  - name: Degraded to Below Average - login_count 
-    title: Degraded to Below Average - login_count 
+
+  - name: Degraded to Below Average - login_count
+    title: Degraded to Below Average - login_count
     type: looker_line
     model: test
     explore: student_improvement
@@ -228,11 +228,11 @@
     point_style: none
     interpolation: linear
     series_types: {}
-    y_axis_max: ['5000'] 
-    
+    y_axis_max: ['5000']
 
-  - name: Improved to Good - Intensity 
-    title: Improved to Good - Intensity 
+
+  - name: Improved to Good - Intensity
+    title: Improved to Good - Intensity
     type: looker_line
     model: test
     explore: student_improvement
@@ -267,9 +267,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['500']
-    
-  - name: Degraded to Below Average - Intensity 
-    title: Degraded to Below Average - Intensity 
+
+  - name: Degraded to Below Average - Intensity
+    title: Degraded to Below Average - Intensity
     type: looker_line
     model: test
     explore: student_improvement
@@ -303,10 +303,10 @@
     point_style: none
     interpolation: linear
     series_types: {}
-    y_axis_max: ['500']    
-    
-  - name: Improved to Good - Duration 
-    title: Improved to Good - Duration 
+    y_axis_max: ['500']
+
+  - name: Improved to Good - Duration
+    title: Improved to Good - Duration
     type: looker_line
     model: test
     explore: student_improvement
@@ -341,9 +341,9 @@
     interpolation: linear
     series_types: {}
     y_axis_max: ['500']
-    
-  - name: Degraded to Below Average - Duration 
-    title: Degraded to Below Average - Duration 
+
+  - name: Degraded to Below Average - Duration
+    title: Degraded to Below Average - Duration
     type: looker_line
     model: test
     explore: student_improvement
@@ -377,5 +377,4 @@
     point_style: none
     interpolation: linear
     series_types: {}
-    y_axis_max: ['500']     
-  
+    y_axis_max: ['500']

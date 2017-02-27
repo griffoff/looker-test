@@ -103,5 +103,4 @@
     y_axis_scale_mode: linear
     show_null_labels: false
 
-    
-    
+
