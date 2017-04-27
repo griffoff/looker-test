@@ -1,6 +1,6 @@
 view: et_time_spent {
   label: "Engagement Toolkit - Time Spent"
-  sql_table_name: DW_DEVMATH.ET_TIME_SPENT ;;
+  sql_table_name: REPORTS.ET_TIME_SPENT ;;
 
   dimension: coursekey {
     label: "Course Key"

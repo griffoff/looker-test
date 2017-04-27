@@ -1,6 +1,6 @@
 view: et_narrative_discipline {
   label: "Engagement Toolkit - Time Spent"
-  sql_table_name: DW_DEVMATH.ET_NARRATIVE_DISCIPLINE ;;
+  sql_table_name: REPORTS.ET_NARRATIVE_DISCIPLINE ;;
 
   dimension: discipline {
     type: string

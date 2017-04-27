@@ -1,5 +1,5 @@
 view: course_density {
-  sql_table_name: DW_DEVMATH.COURSE_DENSITY ;;
+  sql_table_name: DW.COURSE_DENSITY ;;
 
   dimension: coursekey {
     type: string
