@@ -1,6 +1,6 @@
 view: dim_course_rs {
   label: "Course"
-  sql_table_name: DW.DIM_COURSE_RS ;;
+  sql_table_name: DW_DEVMATH.DIM_COURSE_RS ;;
 
   dimension: courseid {
     type: string

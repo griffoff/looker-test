@@ -1,6 +1,6 @@
 view: dim_learningobjective {
   label: "Learning Objective"
-  sql_table_name: DW.DIM_LEARNINGOBJECTIVE ;;
+  sql_table_name: DW_DEVMATH.DIM_LEARNINGOBJECTIVE ;;
 
   dimension: learningobjective {
     label: "Objective"

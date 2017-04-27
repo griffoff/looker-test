@@ -1,6 +1,6 @@
 view: rch_studentinteraction {
   label: "All Student Interactions - RAW"
-  sql_table_name: DW.RCH_STUDENTINTERACTION ;;
+  sql_table_name: DW_DEVMATH.RCH_STUDENTINTERACTION ;;
 
   dimension: coursekey {
     hidden: yes

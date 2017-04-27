@@ -1,6 +1,6 @@
 view: et_narrative {
   label: "Engagement Toolkit - Time Spent"
-  sql_table_name: DW.ET_NARRATIVE ;;
+  sql_table_name: DW_DEVMATH.ET_NARRATIVE ;;
 
   dimension: narrative_general {
     label: "General Narrative"

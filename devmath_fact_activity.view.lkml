@@ -1,6 +1,6 @@
 view: fact_activity {
   label: "Activity"
-  sql_table_name: DW.FACT_ACTIVITY ;;
+  sql_table_name: DW_DEVMATH.FACT_ACTIVITY ;;
 
   measure: avg_normalscore {
     label: "Avg. Score"

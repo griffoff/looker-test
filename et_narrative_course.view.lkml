@@ -1,6 +1,6 @@
 view: et_narrative_course {
   label: "Engagement Toolkit - Time Spent"
-  sql_table_name: DW.ET_NARRATIVE_COURSE ;;
+  sql_table_name: DW_DEVMATH.ET_NARRATIVE_COURSE ;;
 
   dimension: narrative_course {
     label: "Course Level Narrative"

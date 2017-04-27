@@ -1,5 +1,5 @@
 view: fact_resourceinteraction {
-  sql_table_name: DW.FACT_RESOURCEINTERACTION ;;
+  sql_table_name: DW_DEVMATH.FACT_RESOURCEINTERACTION ;;
 
   dimension: category {
     type: string

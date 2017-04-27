@@ -1,5 +1,5 @@
 view: student_improvement {
-  sql_table_name: DW.STUDENT_IMPROVEMENT ;;
+  sql_table_name: DW_DEVMATH.STUDENT_IMPROVEMENT ;;
 
   measure: cntr {
     type: number

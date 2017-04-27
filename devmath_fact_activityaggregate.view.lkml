@@ -1,5 +1,5 @@
 view: fact_activityaggregate {
-  sql_table_name: DW.FACT_ACTIVITYAGGREGATE ;;
+  sql_table_name: DW_DEVMATH.FACT_ACTIVITYAGGREGATE ;;
 
   dimension: aggregateuri {
     type: string

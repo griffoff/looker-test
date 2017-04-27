@@ -1,18 +1,18 @@
 view: dim_activity {
   label: "Activity"
-  sql_table_name: DW_GA.DIM_ACTIVITY ;;
+  sql_table_name: DW_DEVMATH.DIM_ACTIVITY ;;
 
-  dimension: activitydescription {
-    label: "Activity Description"
-    type: string
-    sql: ${TABLE}.ACTIVITYDESCRIPTION ;;
-  }
+#   dimension: activitydescription {
+#     label: "Activity Description"
+#     type: string
+#     sql: ${TABLE}.ACTIVITYDESCRIPTION ;;
+#   }
 
   dimension: activityid {
     type: number
     sql: ${TABLE}.ACTIVITYID ;;
     primary_key: yes
-    hidden: yes
+    hidden: no
   }
 
   dimension: activitysort {
@@ -21,23 +21,59 @@ view: dim_activity {
     hidden: yes
   }
 
-  dimension: activitytitle {
-    label: "Activity Title"
+#   dimension: category {
+#     label: "Activity Category"
+#     type: string
+#     sql: ${TABLE}.CATEGORY ;;
+#   }
+#
+#   dimension: subcategory {
+#     label: "Activity Sub Category"
+#     type: string
+#     sql: ${TABLE}.SUBCATEGORY ;;
+#   }
+#
+#   dimension: subtype {
+#     label: "Activity Sub Type"
+#     type: string
+#     sql: ${TABLE}.SUBTYPE ;;
+#  }
+
+  dimension: applicationname {
+    label: "Application Name"
     type: string
-    sql: ${TABLE}.ACTIVITYTITLE ;;
+    sql: ${TABLE}.APPLICATIONNAME ;;
   }
 
-  dimension: activitytype {
-    label: "Activity Type"
+  dimension: url {
+    label: "Activity Url"
     type: string
-    sql: ${TABLE}.ACTIVITYTYPE ;;
+    sql: ${TABLE}.URL ;;
   }
 
-  dimension: cgi {
-    label: "Activity CGI"
+   dimension: activitytitle {
+     label: "Activity Title"
+     type: string
+     sql: ${TABLE}.ACTIVITYTITLE ;;
+   }
+
+  dimension: activitydescription {
+    label: "Activity Description"
     type: string
-    sql: ${TABLE}.CGI ;;
+    sql: ${TABLE}.ACTIVITYDESCRIPTION ;;
   }
+
+   dimension: activitytype {
+     label: "Activity Type"
+     type: string
+     sql: ${TABLE}.ACTIVITYTYPE ;;
+   }
+
+   dimension: cgi {
+     label: "Activity CGI"
+     type: string
+     sql: ${TABLE}.CGI ;;
+   }
 
   measure: count {
     label: "No. of Activities"

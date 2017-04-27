@@ -21,7 +21,7 @@ view: student_attributes {
     sql: SELECT
         user_guid as user_guid
          ,COUNT(distinct coursekey) as number_of_courses
-      FROM dw.full_student_course_metrics
+      FROM DW_DEVMATH.full_student_course_metrics
       GROUP BY user_guid
        ;;
   }

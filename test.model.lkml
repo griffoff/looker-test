@@ -206,10 +206,10 @@ explore: rch_studentinteraction {
     sql_on: ${user_guid} = ${dim_user.user_guid} ;;
   }
 
-  join: dim_relative_to_start_date {
-    relationship: many_to_one
-    sql_on: ${day_of_course} = ${dim_relative_to_start_date.days} ;;
-  }
+#   join: dim_relative_to_start_date {
+#     relationship: many_to_one
+#     sql_on: ${day_of_course} = ${dim_relative_to_start_date.days} ;;
+#   }
 }
 
 explore: et_report1 {

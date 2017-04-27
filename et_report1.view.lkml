@@ -1,6 +1,6 @@
 view: et_report1 {
   label: "Engagement Toolkit - Time Spent"
-  sql_table_name: DW.ET_REPORT1 ;;
+  sql_table_name: DW_DEVMATH.ET_REPORT1 ;;
 
   measure: score {
     type: average

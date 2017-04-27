@@ -1,5 +1,5 @@
 view: student_course_octant {
-  sql_table_name: DW.STUDENT_COURSE_OCTANT ;;
+  sql_table_name: DW_DEVMATH.STUDENT_COURSE_OCTANT ;;
 
   measure: avg_score {
     type: average

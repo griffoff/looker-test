@@ -1,5 +1,5 @@
 view: dim_scorecategory {
-  sql_table_name: DW.DIM_SCORECATEGORY ;;
+  sql_table_name: DW_DEVMATH.DIM_SCORECATEGORY ;;
 
   dimension: color {
     type: string

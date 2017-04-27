@@ -1,5 +1,5 @@
 view: map_activity_type {
-  sql_table_name: DW.MAP_ACTIVITY_TYPE ;;
+  sql_table_name: DW_DEVMATH.MAP_ACTIVITY_TYPE ;;
 
   dimension: activity_type {
     type: string

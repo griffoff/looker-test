@@ -1,6 +1,6 @@
 view: dim_student {
   label: "Student"
-  sql_table_name: DW.DIM_STUDENT ;;
+  sql_table_name: DW_DEVMATH.DIM_STUDENT ;;
 
   dimension: student {
     type: string

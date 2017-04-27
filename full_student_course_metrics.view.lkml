@@ -1,5 +1,5 @@
 view: full_student_course_metrics {
-  sql_table_name: DW.FULL_STUDENT_COURSE_METRICS ;;
+  sql_table_name: DW_DEVMATH.FULL_STUDENT_COURSE_METRICS ;;
 
   dimension: coursekey {
     type: string
