@@ -1,4 +1,7 @@
- connection: "snowflake_prod"
+connection: "snowflake_prod"
+include: "./activations_transactions.view.lkml"
+
+explore: activations_transactions {}
 
 # label: "Cengage Data on Snowflake"
 #
